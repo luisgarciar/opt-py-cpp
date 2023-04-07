@@ -48,7 +48,7 @@ class problem:
         self.solution = None
 
     def steepest_descent(self: object, alpha: float = 1.0) -> Tuple[ArrayLike, dict]:
-        """Steepest descent algorithm for minimizing a scalar valued function f(x).
+        """Steepest descent method for minimizing a scalar valued function f(x).
         :param self (object): Optimization problem
         :param alpha (float): Step size
 
