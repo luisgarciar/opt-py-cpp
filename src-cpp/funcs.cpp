@@ -1,6 +1,6 @@
-#include "library.h"
-
+#include "funcs.h"
 #include <iostream>
+#include <Eigen/Dense>
 
 void hello ()
 {
