@@ -1,42 +1,72 @@
-//
-// Created by Luis - Work on 09.04.23.
+// quad_function.cpp
+// Description: This file contains the implementation of the class quad_function
+//              for representing quadratic functions of the form
+//              f(x) = 0.5 * x^T * mat * x + b^T * x
+//				where mat is a symmetric matrix and b is a vector
+// Author: Luis Garcia Ramos
+// Date: 09.04.23
 //
 
 #include "quad_function.hpp"
 
 quad_function::quad_function (const MatrixXd mat_in, const VectorXd b_in)
 {
-  // Constructor
+  // Constructor for the class
+  // Check if the dimensions of the input matrix are correct
+  if (mat.rows () != mat.cols ())
+	{
+	  std::cout << "Error: Incorrect dimensions of the input matrix" << std::endl;
+	}
+
+  // Check if the dimensions of the input vector are correct
+  if (b.rows () != mat.rows ())
+	{
+	  std::cout << "Error: Incorrect dimensions of the input vector" << std::endl;
+	}
+
+ // Set the values of the private variables
   mat = mat_in;
   b = b_in;
+  int dim = mat.rows ();
 }
 
 void quad_function::set_mat (const MatrixXd mat_in)
+// Setter Method for the matrix mat
 {
+  // Check if the dimensions of the input matrix are correct
+  if (mat_in.rows () != mat_in.cols ())
+	{
+	  std::cout << "Error: Incorrect dimensions of the input matrix" << std::endl;
+	}
   mat = mat_in;
 }
 
 void quad_function::set_b (const VectorXd b_in)
-{
+{// Setter Method for the vector b
+  // Check if the dimensions of the input vector are correct
+  if (b_in.rows () != mat.rows ())
+	{
+	  std::cout << "Error: Incorrect dimensions of the input vector" << std::endl;
+	}
   b = b_in;
 }
 
 MatrixXd quad_function::get_mat () const
-{
+{// Getter Method for the matrix mat
   return mat;
 }
 
 VectorXd quad_function::get_b () const
-{
+{// Getter Method for the vector b
   return b;
 }
 
 double quad_function::eval (const VectorXd x) const
-{
+{// Method for evaluating the function f(x) = 0.5 * x^T * mat * x + b^T * x
   // Check if the dimensions of the input vector are correct
   if (x.rows () != mat.rows ())
 	{
-	  std::cout << "Error: The dimensions of the input vector are not correct" << std::endl;
+	  std::cout << "Error: Incorrect dimensions of the input vector" << std::endl;
 	  return 0;
 	}
 
@@ -45,7 +75,8 @@ double quad_function::eval (const VectorXd x) const
 }
 
 VectorXd quad_function::grad (const VectorXd x) const
-{
+{ // Method for the gradient of the function f(x) = 0.5 * x^T * mat * x + b^T * x
+  // grad(f)(x) = mat * x + b
   // Check if the dimensions of the input vector are correct
   if (x.rows () != mat.rows ())
 	{

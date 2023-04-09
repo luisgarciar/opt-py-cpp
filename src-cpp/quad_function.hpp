@@ -1,5 +1,10 @@
-//
-// Created by Luis - Work on 09.04.23.
+// quad_function.hpp
+// Description: This file contains the declaration of the class quad_function
+//              for representing quadratic functions of the form
+//              f(x) = 0.5 * x^T * mat * x + b^T * x
+//				where mat is a symmetric matrix and b is a vector
+// Author: Luis Garcia Ramos
+// Date: 09.04.23
 //
 
 #ifndef _QUAD_FUNCTION_HPP_
@@ -12,11 +17,12 @@ using Eigen::VectorXd;
 
 
 class quad_function {
-  // Class for a Quadratic Functions of the form
-  // f(x) = 0.5 * x^T * mat * x + b^T * x
+  // Class for a quadratic Function of the form
+  // f(x) = 0.5 * (x^T * mat * x) + b^T * x
  private:
   MatrixXd mat;
   VectorXd b;
+  int dim;
 
  public:
   // Constructor
