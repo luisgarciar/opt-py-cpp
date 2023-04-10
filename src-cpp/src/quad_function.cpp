@@ -7,7 +7,7 @@
 // Date: 09.04.23
 //
 
-#include "quad_function.hpp"
+#include "../include/quad_function.hpp"
 
 quad_function::quad_function (const MatrixXd mat_in, const VectorXd b_in)
 {
