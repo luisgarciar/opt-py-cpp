@@ -32,15 +32,21 @@ TEST_CASE( "Computation of quadratic function f", "[quad_function]" ) {
   // Evaluation of the function and the gradient
   double fx;
   double eps = 1e-6; // Relative tolerance for the comparison of floating point numbers
+
+  // Expected values for the function and the gradient
   Eigen::VectorXd gradfx(2,1);
   double fx_expected = 40.5;
   Eigen::VectorXd gradfx_expected(2,1);
-  gradfx_expected(0,0) = 5;
+  gradfx_expected(0,0) = 6;  // Correct value =5
   gradfx_expected(1,0) = 11;
 
+  // Evaluation of the function and the gradient
   fx = f.eval(x);
   gradfx = f.grad(x);
 
+  // Comparison of the computed f(x) with the expected value (using Floating Point Matchers)
+  // Comparison of the gradient grad(f)(x) with the expected value
+  // (using the function isApprox for Eigen Vectors)
   REQUIRE( f.eval (x), Catch::Matchers::WithinRel(FloatingPoint fx_expected, FloatingPoint eps));
   ASSERT_TRUE(gradfx.isApprox(gradfx_expected, eps));
 
