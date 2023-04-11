@@ -1,7 +1,7 @@
 // main.cpp
 // Description: This file illustrates the use of the	class quad_function
 //              for representing quadratic functions of the form
-//              f(x) = 0.5 * x^T * mat * x + b^T * x
+//              f(x) = 0.5 * x^T * A * x + b^T * x
 // Author: Luis Garcia Ramos
 // Date: 09.04.23
 //
@@ -31,18 +31,24 @@ int main()
   b = mat*x;
 
   // Print the values of the matrix and vector
-  std::cout << mat << std::endl;
-  std::cout << b << std::endl;
+  std::cout << "A = " << mat << std::endl;
+  std::cout << "x = " << x << std::endl;
+  std::cout << "b = " << b << std::endl;
 
   // Create an object f of the class quad_function
   // with the matrix mat and vector b
   quad_function f(mat, b);
-  double fx;
-  Eigen::VectorXd gradfx(2,1);
 
   // Evaluate the function f and the gradient grad(f) at x
+  double fx;
+  Eigen::VectorXd gradfx(2,1);
   fx = f.eval(x);
   gradfx = f.grad(x);
+
+  // Print the values of the function and the gradient
+  std::cout << "For the function f(x) = x^T  * A * x + b^T * x we have: " << std::endl;
+  std::cout << "f(x) = " << fx << std::endl;
+  std::cout << "grad(f)(x) = " << gradfx << std::endl;
 
   return 0;
 }

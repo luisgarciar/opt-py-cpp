@@ -7,9 +7,9 @@
 
 
 #include <catch2/catch_test_macros.hpp>
+#include <catch2/matchers/catch_matchers_floating_point.hpp>
 #include "../include/quad_function.hpp"
 
-#define CATCH_CONFIG_MAIN
 
 TEST_CASE("Computation of quadratic function f", "[quad_function]")
 {
@@ -31,23 +31,13 @@ TEST_CASE("Computation of quadratic function f", "[quad_function]")
 
   double eps = 1e-6; // Relative tolerance for the comparison of floating point numbers
 
-  // Expected values for the function and the gradient
+  // Expected value for the function and evaluation of the function
   double fx_expected = 40.5;
-  Eigen::VectorXd gradfx_expected (2, 1);
-  gradfx_expected (0, 0) = 6;  // Correct value = 5
-  gradfx_expected (1, 0) = 11;
-
-  // Evaluation of the function and the gradient
   double fx = f.eval (x);
-  Eigen::VectorXd gradfx(2, 1);
-  gradfx = f.grad (x);
 
-  // Comparison of the computed f(x) with the expected value (using Floating Point Matchers)
-  // Comparison of the gradient grad(f)(x) with the expected value
-  // (using the function isApprox for Eigen Vectors)
-  CHECK(f.eval (x), Catch::Matchers::WithinRel (FloatingPoint fx_expected, FloatingPoint eps));
+  // Comparison of the computed f(x) with the expected value (using Matchers)
+  REQUIRE_THAT(fx, Catch::Matchers::WithinAbs(fx_expected, eps));
 }
-
 
 TEST_CASE("Computation of gradient of quadratic function f", "[gradient]")
 {
@@ -71,12 +61,12 @@ TEST_CASE("Computation of gradient of quadratic function f", "[gradient]")
 
   // Expected values for the gradient
   Eigen::VectorXd gradfx_expected (2, 1);
-  gradfx_expected (0, 0) = 6;  // Correct value = 5
-  gradfx_expected (1, 0) = 11;
+  gradfx_expected (0, 0) = 10;
+  gradfx_expected (1, 0) = 22;
 
   // Evaluation of the gradient
   double fx = f.eval (x);
-  Eigen::VectorXd gradfx(2, 1);
+  Eigen::VectorXd gradfx (2, 1);
   gradfx = f.grad (x);
 
   // Comparison of the gradient grad(f)(x) with the expected value
