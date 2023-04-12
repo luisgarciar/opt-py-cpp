@@ -27,11 +27,7 @@ file (GLOB HEADER_FILES "*.hpp")
 file (GLOB PYTHON_FILES "bindings/*.cpp" "bindings/*.hpp")
 
 find_package(pybind11 REQUIRED)
-pybind11_add_module(bindings
-        ${SOURCE_FILES}
-        ${HEADER_FILES}
-        ${PYTHON_FILES}
-        )
-
 target_link_libraries(bindings PUBLIC quad_function)
+pybind11_add_module(bindings bindings.cpp quad_function.cpp quad_function.hpp)
+
 

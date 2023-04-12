@@ -32,5 +32,6 @@
 *.app
 
 #Cmake build folder and IntelliJ files
-src-cpp/cmake-build-debug/*
-src-cpp/.idea/*
+/src-cpp/cmake-build-debug/
+/src-cpp/.idea/
+/src-cpp/build/
