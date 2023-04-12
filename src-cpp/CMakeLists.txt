@@ -1,20 +1,16 @@
-cmake_minimum_required(VERSION 3.2)
+cmake_minimum_required(VERSION 3.11)
 project(quadratic_function LANGUAGES CXX)
 
 set(CMAKE_CXX_STANDARD 14)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
-enable_testing()
-
-#find_package(Eigen3 3.3 REQUIRED CONFIG)
-# Add the library quad_function and the executable main
-#add_library(quad_function STATIC include/quad_function.hpp src/quad_function.cpp)
-#add_executable(main src/main.cpp)
 
 #Add the subdirectories with source code and tests
 add_subdirectory(src)
+add_subdirectory(bind)
 add_subdirectory(tests)
 
+enable_testing()
 
 #Link the libraries to the executables
 #target_link_libraries(quad_function PUBLIC Eigen3::Eigen)

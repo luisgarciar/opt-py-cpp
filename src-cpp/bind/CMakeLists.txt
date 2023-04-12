@@ -1,33 +1,25 @@
-# CMakeLists.txt file for the python bindings  (OLD)
-#find_package(PythonLibs 3 REQUIRED)
-#find_package(pybind11 REQUIRED)
-#
-#set(PYBIND_PATH ../extern/pybind11)
-#include_directories(${PYBIND_PATH})
-#
-#if(NOT EXISTS "${PYBIND_PATH}/CMakeLists.txt")
-#    message(FATAL_ERROR "The submodules were not downloaded! GIT_SUBMODULE was turned off or failed. Please update submodules and try again.")
-#endif()
-#
-#pybind11_add_module(bindings  bindings.cpp)
-#
-
 # CMakeLists.txt file for the python bindings
-cmake_minimum_required(VERSION 3.1)
+include_directories("${PROJECT_SOURCE_DIR}/include")
 
-set(CMAKE_CXX_STANDARD 17)
+# Fetch pybind11 from github
+include(FetchContent)
+FetchContent_Declare(
+        pybind11
+        GIT_REPOSITORY https://github.com/pybind/pybind11
+        GIT_TAG v2.10.0
+)
 
-project(bindings)
+# Make pybind11 available for other targets
+FetchContent_GetProperties(pybind11)
+if(NOT pybind11_POPULATED)
+    FetchContent_Populate(pybind11)
+    add_subdirectory(${pybind11_SOURCE_DIR} ${pybind11_BINARY_DIR})
+endif()
 
-include_directories("${CMAKE_SOURCE_DIR}/include")
-include_directories("${CMAKE_SOURCE_DIR}/bindings")
+# Create the python module defined in bindings.cpp
+pybind11_add_module(
+        py_quad_fcn
+        bindings.cpp
+)
 
-file (GLOB SOURCE_FILES "src/*.cpp")
-file (GLOB HEADER_FILES "*.hpp")
-file (GLOB PYTHON_FILES "bindings/*.cpp" "bindings/*.hpp")
-
-find_package(pybind11 REQUIRED)
-target_link_libraries(bindings PUBLIC quad_function)
-pybind11_add_module(bindings bindings.cpp quad_function.cpp quad_function.hpp)
-
-
+target_link_libraries(py_quad_fcn PRIVATE quad_function pybind11::module)
