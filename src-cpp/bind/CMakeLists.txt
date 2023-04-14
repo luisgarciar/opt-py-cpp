@@ -1,5 +1,4 @@
 # CMakeLists.txt file for the python bindings
-include_directories("${PROJECT_SOURCE_DIR}/include")
 
 # Fetch pybind11 from github
 include(FetchContent)
@@ -16,14 +15,17 @@ if(NOT pybind11_POPULATED)
     add_subdirectory(${pybind11_SOURCE_DIR} ${pybind11_BINARY_DIR})
 endif()
 
+# Directory where the header files are located
+include_directories("${PROJECT_SOURCE_DIR}/src-cpp/include")
 # Create the python module defined in bindings.cpp
-pybind11_add_module(
-        quad
-        bindings.cpp
-)
+pybind11_add_module(quad SHARED  bindings.cpp )
 
-message(STATUS "Cmake install dir: (include: ${EIGEN3_INCLUDE_DIR})")
-
-
+#Link the module to the pybind library and the quad_function library
 target_link_libraries(quad PRIVATE quad_function pybind11::module)
-install(TARGETS quad DESTINATION .)
+
+# Copy the module to the python directory
+install(TARGETS quad DESTINATION CMAKE_SOURCE_DIR/src-python)
+
+
+
+#install(TARGETS quad DESTINATION .)
