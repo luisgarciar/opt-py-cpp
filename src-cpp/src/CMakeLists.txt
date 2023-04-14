@@ -1,5 +1,6 @@
 
 find_package(Eigen3 3.3 REQUIRED)
+message(STATUS "Eigen3 found (include: ${EIGEN3_INCLUDE_DIR})")
 
 # Add library and link with Eigen
 add_library(quad_function STATIC ../include/quad_function.hpp quad_function.cpp)

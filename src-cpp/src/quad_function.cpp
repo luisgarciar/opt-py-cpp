@@ -9,7 +9,7 @@
 
 #include "../include/quad_function.hpp"
 
-quad_function::quad_function (const MatrixXd mat_in, const VectorXd b_in)
+quadFunction::quadFunction (const MatrixXd mat_in, const VectorXd b_in)
 {
   // Constructor for the class
   // Check if the dimensions of the input matrix are correct
@@ -30,7 +30,7 @@ quad_function::quad_function (const MatrixXd mat_in, const VectorXd b_in)
   int dim = mat.rows ();
 }
 
-void quad_function::set_mat (const MatrixXd mat_in)
+void quadFunction::set_mat (const MatrixXd mat_in)
 // Setter Method for the matrix mat
 {
   // Check if the dimensions of the input matrix are correct
@@ -41,7 +41,7 @@ void quad_function::set_mat (const MatrixXd mat_in)
   mat = mat_in;
 }
 
-void quad_function::set_b (const VectorXd b_in)
+void quadFunction::set_b (const VectorXd b_in)
 {// Setter Method for the vector b
   // Check if the dimensions of the input vector are correct
   if (b_in.rows () != mat.rows ())
@@ -51,17 +51,17 @@ void quad_function::set_b (const VectorXd b_in)
   b = b_in;
 }
 
-MatrixXd quad_function::get_mat () const
+MatrixXd quadFunction::get_mat () const
 {// Getter Method for the matrix mat
   return mat;
 }
 
-VectorXd quad_function::get_b () const
+VectorXd quadFunction::get_b () const
 {// Getter Method for the vector b
   return b;
 }
 
-double quad_function::eval (const VectorXd x) const
+double quadFunction::eval (const VectorXd x) const
 {// Method for evaluating the function f(x) = 0.5 * x^T * mat * x + b^T * x
   // Check if the dimensions of the input vector are correct
   if (x.rows () != mat.rows ())
@@ -74,7 +74,7 @@ double quad_function::eval (const VectorXd x) const
   return 0.5 * double ((x.transpose () * (mat * x))) + double ((b.transpose () * x));
 }
 
-VectorXd quad_function::grad (const VectorXd x) const
+VectorXd quadFunction::grad (const VectorXd x) const
 { // Method for the gradient of the function f(x) = 0.5 * x^T * mat * x + b^T * x
   // grad(f)(x) = mat * x + b
   // Check if the dimensions of the input vector are correct

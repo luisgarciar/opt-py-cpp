@@ -18,8 +18,12 @@ endif()
 
 # Create the python module defined in bindings.cpp
 pybind11_add_module(
-        py_quad_fcn
+        quad
         bindings.cpp
 )
 
-target_link_libraries(py_quad_fcn PRIVATE quad_function pybind11::module)
+message(STATUS "Cmake install dir: (include: ${EIGEN3_INCLUDE_DIR})")
+
+
+target_link_libraries(quad PRIVATE quad_function pybind11::module)
+install(TARGETS quad DESTINATION .)

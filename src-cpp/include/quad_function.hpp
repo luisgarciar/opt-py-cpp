@@ -16,7 +16,7 @@ using Eigen::MatrixXd;
 using Eigen::VectorXd;
 
 
-class quad_function {
+class quadFunction {
   // Class for a quadratic Function of the form
   // f(x) = 0.5 * (x^T * mat * x) + b^T * x
  private:
@@ -26,7 +26,7 @@ class quad_function {
 
  public:
   // Constructor
-  quad_function(const MatrixXd mat_in, const VectorXd b_in);
+  quadFunction(const MatrixXd mat_in, const VectorXd b_in);
 
   // Setter Functions
   void set_mat(const MatrixXd mat_in);

@@ -27,7 +27,7 @@ TEST_CASE("Computation of quadratic function f", "[quad_function]")
   VectorXd b (2, 1);
   b = mat * x;
 
-  quad_function f (mat, b);
+  quadFunction f (mat, b);
 
   double eps = 1e-6; // Relative tolerance for the comparison of floating point numbers
 
@@ -55,7 +55,7 @@ TEST_CASE("Computation of gradient of quadratic function f", "[gradient]")
   VectorXd b (2, 1);
   b = mat * x;
 
-  quad_function f (mat, b);
+  quadFunction f (mat, b);
 
   double eps = 1e-6; // Relative tolerance for the comparison of floating point numbers
 

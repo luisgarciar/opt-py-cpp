@@ -37,7 +37,7 @@ int main()
 
   // Create an object f of the class quad_function
   // with the matrix mat and vector b
-  quad_function f(mat, b);
+  quadFunction f(mat, b);
 
   // Evaluate the function f and the gradient grad(f) at x
   double fx;

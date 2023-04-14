@@ -5,11 +5,11 @@
 
 namespace py = pybind11;
 
-PYBIND11_MODULE(quad_func, qf) {
-	qf.doc() = "pybind11 example plugin"; // optional module docstring
+PYBIND11_MODULE(quad, m) {
+	m.doc() = "pybind11 example plugin"; // optional module docstring
 
-	py::class_<quad_function>(qf, "quad_function")
+	py::class_<quadFunction>(m, "quad_function")
 		.def(py::init<MatrixXd, VectorXd>())
-		.def("eval", &quad_function::eval)
-		.def("grad", &quad_function::grad);
+		.def("eval", &quadFunction::eval)
+		.def("grad", &quadFunction::grad);
 }
