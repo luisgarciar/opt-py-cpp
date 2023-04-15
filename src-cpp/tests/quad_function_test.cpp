@@ -14,17 +14,17 @@
 TEST_CASE("Computation of quadratic function f", "[quad_function]")
 {
   // Data and definition of the quadratic function
-  MatrixXd mat (2, 2);
+  Eigen::MatrixXd mat (2, 2);
   mat (0, 0) = 1;
   mat (0, 1) = 2;
   mat (1, 0) = 3;
   mat (1, 1) = 4;
 
-  VectorXd x (2, 1);
+  Eigen::VectorXd x (2, 1);
   x (0, 0) = 1;
   x (1, 0) = 2;
 
-  VectorXd b (2, 1);
+  Eigen::VectorXd b (2, 1);
   b = mat * x;
 
   quadFunction f (mat, b);
@@ -42,17 +42,17 @@ TEST_CASE("Computation of quadratic function f", "[quad_function]")
 TEST_CASE("Computation of gradient of quadratic function f", "[gradient]")
 {
   // Data and definition of the quadratic function
-  MatrixXd mat (2, 2);
+  Eigen::MatrixXd mat (2, 2);
   mat (0, 0) = 1;
   mat (0, 1) = 2;
   mat (1, 0) = 3;
   mat (1, 1) = 4;
 
-  VectorXd x (2, 1);
+  Eigen::VectorXd x (2, 1);
   x (0, 0) = 1;
   x (1, 0) = 2;
 
-  VectorXd b (2, 1);
+  Eigen::VectorXd b (2, 1);
   b = mat * x;
 
   quadFunction f (mat, b);

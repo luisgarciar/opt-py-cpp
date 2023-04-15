@@ -9,37 +9,32 @@
 
 #ifndef _QUAD_FUNCTION_HPP_
 #define _QUAD_FUNCTION_HPP_
-#include <iostream>
 #include <Eigen/Dense>   // Eigen Library for Linear Algebra Operations
-
-using Eigen::MatrixXd;
-using Eigen::VectorXd;
 
 
 class quadFunction {
   // Class for a quadratic Function of the form
   // f(x) = 0.5 * (x^T * mat * x) + b^T * x
  private:
-  MatrixXd mat;
-  VectorXd b;
-  int dim;
+  Eigen::Ref<Eigen::MatrixXd> mat;
+  Eigen::Ref<Eigen::VectorXd> b;
 
  public:
   // Constructor
-  quadFunction(const MatrixXd mat_in, const VectorXd b_in);
+  quadFunction (Eigen::Ref<Eigen::MatrixXd> mat_in, Eigen::Ref<Eigen::VectorXd> b_in);
 
   // Setter Functions
-  void set_mat(const MatrixXd mat_in);
-  void set_b(const VectorXd b_in);
+  void set_mat (Eigen::Ref<Eigen::MatrixXd> mat_in);
+  void set_b (Eigen::Ref<Eigen::VectorXd> b_in);
 
   // Getter Functions
-  MatrixXd get_mat() const;
-  VectorXd get_b() const;
+  Eigen::Ref<Eigen::MatrixXd> get_mat () const;
+  Eigen::Ref<Eigen::VectorXd> get_b () const;
 
   // Evaluation Functions
-  double eval(const VectorXd x) const;  // Evaluate the function at x
+  double eval (Eigen::Ref<Eigen::VectorXd> x) const;  // Evaluate the function at x
 
-  VectorXd grad(const VectorXd x) const;	// Evaluate the gradient at x
+  Eigen::Ref<Eigen::VectorXd> grad (Eigen::Ref<Eigen::VectorXd> x) const; // Evaluate the gradient at x
 
 };
 
