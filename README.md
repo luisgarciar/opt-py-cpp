@@ -46,9 +46,9 @@ To activate the virtual environment, run the following command:
 
 Then navigate to the root directory of the repository and run the `setup.py` script using pip:
 
-    ```bash
-        pip install .
-    ```
+``` bash
+    pip install .
+```
 
 This will install the Python requirements, build the C++ functions, bind them and make them available in Python by
 adding the module `simpleopt` to the Python path.
