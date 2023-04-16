@@ -10,31 +10,35 @@
 #ifndef _QUAD_FUNCTION_HPP_
 #define _QUAD_FUNCTION_HPP_
 #include <Eigen/Dense>   // Eigen Library for Linear Algebra Operations
+#include <pybind11/pybind11.h>
+#include <pybind11/eigen.h>
+
+namespace py = pybind11;
 
 
 class quadFunction {
   // Class for a quadratic Function of the form
   // f(x) = 0.5 * (x^T * mat * x) + b^T * x
  private:
-  Eigen::Ref<Eigen::MatrixXd> mat;
-  Eigen::Ref<Eigen::VectorXd> b;
+  py::EigenDRef<Eigen::MatrixXd> mat;
+  py::EigenDRef<Eigen::VectorXd> b;
 
  public:
   // Constructor
-  quadFunction (Eigen::Ref<Eigen::MatrixXd> mat_in, Eigen::Ref<Eigen::VectorXd> b_in);
+  quadFunction (py::EigenDRef<Eigen::MatrixXd> mat_in, py::EigenDRef<Eigen::VectorXd> b_in);
 
   // Setter Functions
-  void set_mat (Eigen::Ref<Eigen::MatrixXd> mat_in);
-  void set_b (Eigen::Ref<Eigen::VectorXd> b_in);
+  void set_mat (py::EigenDRef<Eigen::MatrixXd> mat_in);
+  void set_b (py::EigenDRef<Eigen::VectorXd> b_in);
 
   // Getter Functions
-  Eigen::Ref<Eigen::MatrixXd> get_mat () const;
-  Eigen::Ref<Eigen::VectorXd> get_b () const;
+  py::EigenDRef<Eigen::MatrixXd> get_mat () const;
+  py::EigenDRef<Eigen::VectorXd> get_b () const;
 
   // Evaluation Functions
-  double eval (Eigen::Ref<Eigen::VectorXd> x) const;  // Evaluate the function at x
+  double eval (py::EigenDRef<Eigen::VectorXd> x) const;  // Evaluate the function at x
 
-  Eigen::Ref<Eigen::VectorXd> grad (Eigen::Ref<Eigen::VectorXd> x) const; // Evaluate the gradient at x
+  py::EigenDRef<Eigen::VectorXd> grad (py::EigenDRef<Eigen::VectorXd> x) const; // Evaluate the gradient at x
 
 };
 
