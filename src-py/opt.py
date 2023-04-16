@@ -1,4 +1,4 @@
-"""Optimization algorithms for maximizing/minimizing a scalar valued function f(x)."""
+"""Optimization routines for maximizing/minimizing a scalar valued function f(x)."""
 
 from typing import Callable, Tuple
 
@@ -14,27 +14,35 @@ class problem:
     """
 
     def __init__(
-        self: object,
-        f: Callable,
-        gradf: Callable,
-        x0: ArrayLike,
-        prob_type: str = "min",
-        tol: float = 1e-6,
-        maxiter: int = 1000,
-        method: str = None,
+            self: object,
+            f: Callable,
+            gradf: Callable,
+            x0: ArrayLike,
+            prob_type: str = "min",
+            tol: float = 1e-6,
+            maxiter: int = 1000,
+            method: str = None,
     ) -> object:
         """Initialize the problem class.
-        :param self:
-        :param f (callable): Function to be optimized
-        :param gradf (callable): Gradient of the function to be optimized
-        :param x0 (NdArray): Initial point
-        :param prob_type (str): Type of optimization problem ('min' or 'max')
-        :param tol (float): Tolerance for stopping the algorithm
-        :param maxiter (int): Maximum number of iterations
-        :param method (str): Optimization method to use
+        :param self: Optimization problem
+        :type self: object
+        :param f: Function to be optimized
+         :type f: callable
+        :param gradf: Gradient of the function to be optimized
+        :type gradf: callable
+        :param x0: Initial point
+        :type x0: NdArray
+        :param prob_type: Type of optimization problem ('min' or 'max')
+        :type prob_type: str
+        :param tol: Tolerance for stopping the algorithm
+        :type tol: float
+        :param maxiter: Maximum number of iterations
+        :type maxiter: int
+        :param method: Optimization method to use
+        :type method: str
 
-        :return:
-        self (object): Optimization problem
+        :return: self: Optimization problem
+        :rtype: object
         """
 
         self.f = f
@@ -49,11 +57,14 @@ class problem:
 
     def steepest_descent(self: object, alpha: float = 1.0) -> Tuple[ArrayLike, dict]:
         """Steepest descent method for minimizing a scalar valued function f(x).
-        :param self (object): Optimization problem
-        :param alpha (float): Step size
+        :param self: Optimization problem
+        :type self: object
+        :param alpha: Step size
+        :type alpha: float
 
         :return:
-        sol, info Tuple(ArrayLike, dict): Optimal point and additional information
+        sol, info : Optimal point and additional information
+        :rtype: Tuple(NdArray, dict)
         """
         x = self.x0
         iter_count = 0
@@ -86,7 +97,7 @@ class problem:
             step_size = alpha
             # perform line search to find optimal step size
             while func(x + step_size * direction) > func(x) + step_size * 0.1 * np.dot(
-                gradient, direction
+                    gradient, direction
             ):
                 step_size *= 0.5
             # update x with the step
@@ -98,8 +109,9 @@ class problem:
         return x, self.info
 
     def solve(self: object) -> Tuple[ArrayLike, dict]:
-        """Solve the optimization problem.
-        :param self (object): Optimization problem
+        """Solve the optimization problem using the specified method.
+
+        :raises [NotImplementedError]: Method not implemented
 
         :return:
         sol, info Tuple(NdArray, dict): Optimal point and additional information
@@ -112,14 +124,14 @@ class problem:
 
 
 if __name__ == "__main__":
-    print("hello world")
-
     # define objective function and gradient
     def f(x):
         return x[0] ** 2 + x[1] ** 2
 
+
     def gradf(x):
         return np.array([2 * x[0], 2 * x[1]])
+
 
     # define optimization problem
     prob = problem(f, gradf, x0=np.array([1.0, 1.0]), method="steepest_descent")

@@ -8,11 +8,11 @@ The package pybind11 is used to bind the C++ functions to Python.
 ### Requirements and installation
 
 To compile and build the test functions, you will need
-a C++ compiler and the CMake and Make build systems. We also use the Eigen library for
-linear algebra operations.
+a C++ compiler and the CMake and Make build systems. We also use 
+the Eigen library for linear algebra operations.
 
-To install the C++ requirements on Ubuntu using the ```apt-get``` package manager, run the following commands in a
-terminal window:
+To install the C++ requirements on Ubuntu using the ```apt-get``` package manager, 
+run the following commands in a terminal window:
 
 ```bash
     sudo apt-get install gcc g++ cmake make libeigen3-dev lib
@@ -25,7 +25,7 @@ Homebrew, by typing the following commands in a terminal window:
     brew install gcc cmake make eigen
    ```
 
-The C++ libraries Catch2 and pybind11 are fetch during in the repository,
+The C++ libraries Catch2 and pybind11 are fetch during the build process,
 so you do not need to install them prior to building the package.
 
 To build the rest of the package, you will need Python 3.6 or later.
