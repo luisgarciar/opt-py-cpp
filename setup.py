@@ -1,15 +1,16 @@
 # Based on the example from pybind repository
 
 import os
+import platform
 import re
+import subprocess
 import sys
 import sysconfig
-import platform
-import subprocess
-
 from distutils.version import LooseVersion
+
 from setuptools import setup, Extension
 from setuptools.command.build_ext import build_ext
+
 
 class CMakeExtension(Extension):
     def __init__(self, name, sourcedir=''):
@@ -52,7 +53,7 @@ class CMakeBuild(build_ext):
             cmake_args += ['-DCMAKE_LIBRARY_OUTPUT_DIRECTORY_{}={}'.format(
                 cfg.upper(),
                 extdir)]
-            if sys.maxsize > 2**32:
+            if sys.maxsize > 2 ** 32:
                 cmake_args += ['-A', 'x64']
             build_args += ['--', '/m']
         else:
@@ -73,15 +74,16 @@ class CMakeBuild(build_ext):
 
 
 setup(
-        name='simpleopt',
-        version='0.0.1',
-        author='Luis Garcia Ramos',
-        author_email='luisgarciar@gmail.com',
-        description='A hybrid Python/C++ optimization tool',
-        long_description='',
-        # add extension module
-        ext_modules=[CMakeExtension('src-cpp')],
-        # add custom build_ext command
-        cmdclass=dict(build_ext=CMakeBuild),
-        zip_safe=False,
+    name='simpleopt',
+    version='0.0.1',
+    author='Luis Garcia Ramos',
+    author_email='luisgarciar@gmail.com',
+    description='A hybrid Python/C++ optimization tool',
+    long_description='',
+    # add extension module
+    ext_modules=[CMakeExtension('src-cpp')],
+    cmake_install_dir="/src-py",
+    # add custom build_ext command
+    cmdclass=dict(build_ext=CMakeBuild),
+    zip_safe=False,
 )
