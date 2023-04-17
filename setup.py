@@ -1,5 +1,5 @@
 # Setup script for the Python module
-# Based on the example from pybind repository:
+# Based on the example from the pybind repository:
 # https://github.com/pybind/cmake_example
 
 import os
@@ -86,7 +86,9 @@ setup(
     author_email='luisgarciar@gmail.com',
     description='A hybrid Python/C++ optimization tool',
     long_description='',
-    # add extension module
+    package_dir={'': 'src-py'},
+    py_modules=['opt'],
+    # ext_package='quad',
     ext_modules=[CMakeExtension('src-cpp')],
     cmake_install_dir="/src-py",
     # add custom build_ext command

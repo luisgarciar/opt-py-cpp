@@ -137,4 +137,3 @@ if __name__ == "__main__":
     prob = problem(f, gradf, x0=np.array([1.0, 1.0]), method="steepest_descent")
     # solve optimization problem
     sol, info = prob.solve()
-    print(sol)
