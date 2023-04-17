@@ -5,7 +5,6 @@ from numpy.testing import assert_allclose
 
 from opt import problem
 
-
 def test_scalar_steepest_descent():
     """Test steepest descent algorithm for minimizing a scalar valued function f(x)."""
     # define function and gradient
