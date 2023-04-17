@@ -1,4 +1,6 @@
-# Based on the example from pybind repository
+# Setup script for the Python module
+# Based on the example from pybind repository:
+# https://github.com/pybind/cmake_example
 
 import os
 import platform
@@ -13,13 +15,13 @@ from setuptools.command.build_ext import build_ext
 
 
 class CMakeExtension(Extension):
-    def __init__(self, name, sourcedir=''):
+    def __init__(self, name: str, sourcedir: str = ''):
         Extension.__init__(self, name, sources=[])
         self.sourcedir = os.path.abspath(sourcedir)
 
 
 class CMakeBuild(build_ext):
-    def run(self):
+    def run(self: object):
         try:
             out = subprocess.check_output(['cmake', '--version'])
         except OSError:
@@ -36,7 +38,11 @@ class CMakeBuild(build_ext):
         for ext in self.extensions:
             self.build_extension(ext)
 
-    def build_extension(self, ext):
+    def build_extension(self: object, ext: Extension):
+        """
+        :param ext: Extension to be built
+        :type ext: Extension
+        """
         extdir = os.path.abspath(
             os.path.dirname(self.get_ext_fullpath(ext.name)))
         cmake_args = ['-DCMAKE_LIBRARY_OUTPUT_DIRECTORY=' + extdir,
