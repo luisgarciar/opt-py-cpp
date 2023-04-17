@@ -9,7 +9,10 @@
 #include <catch2/catch_test_macros.hpp>
 #include <catch2/matchers/catch_matchers_floating_point.hpp>
 #include "../include/quad_function.hpp"
+#include <pybind11/pybind11.h>
+#include <pybind11/eigen.h>
 
+//namespace py = pybind11{
 
 TEST_CASE("Computation of quadratic function f", "[quad_function]")
 {

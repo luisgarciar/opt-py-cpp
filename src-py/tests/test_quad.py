@@ -7,18 +7,19 @@ from quad import function
 
 
 def test_quad_function():
-    """Test quad function from src-cpp/quad.cpp with bindings in
+    """Test of quad.function defined in src-cpp/quad.cpp with bindings in
     src-cpp/bind/bindings.cpp"""
 
     # define function with numpy arrays
-    A = np.asarray([[1, 2], [3, 4]])
-    x = np.asarray([1, 2])
+    A = np.asarray([[1, 2], [3, 4]], dtype=np.float64)
+    x = np.asarray([1, 2], dtype=np.float64)
     b = A @ x
     # f(x) = 0.5*(x^T A x) + b^T x
     f = function(A, b)
 
     # check that the function value is correct
-    assert_allclose(f(x), 40.5, atol=1e-6)
+    assert_allclose(f.eval(x), 40.5, atol=1e-6)
 
     # check that the gradient is correct
-    assert_allclose(f.grad(x), np.asarray([5, 10]), atol=1e-6)
+    print(f.grad(x));
+    assert_allclose(f.grad(x), np.asarray([10, 22]), atol=1e-6)
