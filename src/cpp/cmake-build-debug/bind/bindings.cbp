@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CodeBlocks_project_file>
+	<FileVersion major="1" minor="6"/>
+	<Project>
+		<Option title="bindings"/>
+		<Option makefile_is_custom="1"/>
+		<Option compiler="gcc"/>
+		<Option virtualFolders="CMake Files\;CMake Files\bind\;CMake Files\cmake-build-debug\;CMake Files\cmake-build-debug\_deps\;CMake Files\cmake-build-debug\_deps\pybind11-src\;CMake Files\cmake-build-debug\_deps\pybind11-src\tools\;CMake Files\src\;CMake Files\..\;CMake Files\..\..\;CMake Files\..\..\..\;CMake Files\..\..\..\..\;CMake Files\..\..\..\..\..\;CMake Files\..\..\..\..\..\..\;CMake Files\..\..\..\..\..\..\usr\;CMake Files\..\..\..\..\..\..\usr\local\;CMake Files\..\..\..\..\..\..\usr\local\share\;CMake Files\..\..\..\..\..\..\usr\local\share\eigen3\;CMake Files\..\..\..\..\..\..\usr\local\share\eigen3\cmake\;CMake Files\..\..\..\..\..\..\usr\local\lib\;CMake Files\..\..\..\..\..\..\usr\local\lib\cmake\;CMake Files\..\..\..\..\..\..\usr\local\lib\cmake\Catch2\;CMake Files\tests\;"/>
+		<Build>
+			<Target title="all">
+				<Option working_dir="/Users/luis-work/Documents/code/opt-py-cpp/src-cpp/cmake-build-debug/bind"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j4 -f &quot;/Users/luis-work/Documents/code/opt-py-cpp/src-cpp/cmake-build-debug/bind/Makefile&quot;  VERBOSE=1 all"/>
+					<CompileFile command="/usr/bin/make -j4 -f &quot;/Users/luis-work/Documents/code/opt-py-cpp/src-cpp/cmake-build-debug/bind/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j4 -f &quot;/Users/luis-work/Documents/code/opt-py-cpp/src-cpp/cmake-build-debug/bind/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j4 -f &quot;/Users/luis-work/Documents/code/opt-py-cpp/src-cpp/cmake-build-debug/bind/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="bindings">
+				<Option output="/Users/luis-work/Documents/code/opt-py-cpp/src-cpp/cmake-build-debug/bind/libbindings.a" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/Users/luis-work/Documents/code/opt-py-cpp/src-cpp/cmake-build-debug/bind"/>
+				<Option object_output="./"/>
+				<Option type="2"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="/Library/Developer/CommandLineTools/usr/bin/../include/c++/v1"/>
+					<Add directory="/usr/local/include"/>
+					<Add directory="/Library/Developer/CommandLineTools/usr/lib/clang/13.0.0/include"/>
+					<Add directory="/Library/Developer/CommandLineTools/usr/include"/>
+					<Add directory="/System/Library/Frameworks"/>
+					<Add directory="/Library/Frameworks"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j4 -f &quot;/Users/luis-work/Documents/code/opt-py-cpp/src-cpp/cmake-build-debug/bind/Makefile&quot;  VERBOSE=1 bindings"/>
+					<CompileFile command="/usr/bin/make -j4 -f &quot;/Users/luis-work/Documents/code/opt-py-cpp/src-cpp/cmake-build-debug/bind/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j4 -f &quot;/Users/luis-work/Documents/code/opt-py-cpp/src-cpp/cmake-build-debug/bind/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j4 -f &quot;/Users/luis-work/Documents/code/opt-py-cpp/src-cpp/cmake-build-debug/bind/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="bindings/fast">
+				<Option output="/Users/luis-work/Documents/code/opt-py-cpp/src-cpp/cmake-build-debug/bind/libbindings.a" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/Users/luis-work/Documents/code/opt-py-cpp/src-cpp/cmake-build-debug/bind"/>
+				<Option object_output="./"/>
+				<Option type="2"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="/Library/Developer/CommandLineTools/usr/bin/../include/c++/v1"/>
+					<Add directory="/usr/local/include"/>
+					<Add directory="/Library/Developer/CommandLineTools/usr/lib/clang/13.0.0/include"/>
+					<Add directory="/Library/Developer/CommandLineTools/usr/include"/>
+					<Add directory="/System/Library/Frameworks"/>
+					<Add directory="/Library/Frameworks"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j4 -f &quot;/Users/luis-work/Documents/code/opt-py-cpp/src-cpp/cmake-build-debug/bind/Makefile&quot;  VERBOSE=1 bindings/fast"/>
+					<CompileFile command="/usr/bin/make -j4 -f &quot;/Users/luis-work/Documents/code/opt-py-cpp/src-cpp/cmake-build-debug/bind/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j4 -f &quot;/Users/luis-work/Documents/code/opt-py-cpp/src-cpp/cmake-build-debug/bind/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j4 -f &quot;/Users/luis-work/Documents/code/opt-py-cpp/src-cpp/cmake-build-debug/bind/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+		</Build>
+		<Unit filename="/Users/luis-work/Documents/code/opt-py-cpp/src-cpp/bind/bindings.cpp">
+			<Option target="bindings"/>
+		</Unit>
+		<Unit filename="/Users/luis-work/Documents/code/opt-py-cpp/src-cpp/CMakeLists.txt">
+			<Option virtualFolder="CMake Files\"/>
+		</Unit>
+		<Unit filename="/Users/luis-work/Documents/code/opt-py-cpp/src-cpp/bind/CMakeLists.txt">
+			<Option virtualFolder="CMake Files\bind\"/>
+		</Unit>
+		<Unit filename="/Users/luis-work/Documents/code/opt-py-cpp/src-cpp/cmake-build-debug/_deps/pybind11-src/CMakeLists.txt">
+			<Option virtualFolder="CMake Files\cmake-build-debug\_deps\pybind11-src\"/>
+		</Unit>
+		<Unit filename="/Users/luis-work/Documents/code/opt-py-cpp/src-cpp/cmake-build-debug/_deps/pybind11-src/tools/FindPythonLibsNew.cmake">
+			<Option virtualFolder="CMake Files\cmake-build-debug\_deps\pybind11-src\tools\"/>
+		</Unit>
+		<Unit filename="/Users/luis-work/Documents/code/opt-py-cpp/src-cpp/cmake-build-debug/_deps/pybind11-src/tools/pybind11Common.cmake">
+			<Option virtualFolder="CMake Files\cmake-build-debug\_deps\pybind11-src\tools\"/>
+		</Unit>
+		<Unit filename="/Users/luis-work/Documents/code/opt-py-cpp/src-cpp/cmake-build-debug/_deps/pybind11-src/tools/pybind11Tools.cmake">
+			<Option virtualFolder="CMake Files\cmake-build-debug\_deps\pybind11-src\tools\"/>
+		</Unit>
+		<Unit filename="/Users/luis-work/Documents/code/opt-py-cpp/src-cpp/src/CMakeLists.txt">
+			<Option virtualFolder="CMake Files\src\"/>
+		</Unit>
+		<Unit filename="/Users/luis-work/Documents/code/opt-py-cpp/src-cpp/../../../../../../usr/local/share/eigen3/cmake/Eigen3Config.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\..\..\..\usr\local\share\eigen3\cmake\"/>
+		</Unit>
+		<Unit filename="/Users/luis-work/Documents/code/opt-py-cpp/src-cpp/../../../../../../usr/local/share/eigen3/cmake/Eigen3ConfigVersion.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\..\..\..\usr\local\share\eigen3\cmake\"/>
+		</Unit>
+		<Unit filename="/Users/luis-work/Documents/code/opt-py-cpp/src-cpp/../../../../../../usr/local/share/eigen3/cmake/Eigen3Targets.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\..\..\..\usr\local\share\eigen3\cmake\"/>
+		</Unit>
+		<Unit filename="/Users/luis-work/Documents/code/opt-py-cpp/src-cpp/../../../../../../usr/local/lib/cmake/Catch2/Catch.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\..\..\..\usr\local\lib\cmake\Catch2\"/>
+		</Unit>
+		<Unit filename="/Users/luis-work/Documents/code/opt-py-cpp/src-cpp/../../../../../../usr/local/lib/cmake/Catch2/Catch2Config.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\..\..\..\usr\local\lib\cmake\Catch2\"/>
+		</Unit>
+		<Unit filename="/Users/luis-work/Documents/code/opt-py-cpp/src-cpp/../../../../../../usr/local/lib/cmake/Catch2/Catch2ConfigVersion.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\..\..\..\usr\local\lib\cmake\Catch2\"/>
+		</Unit>
+		<Unit filename="/Users/luis-work/Documents/code/opt-py-cpp/src-cpp/../../../../../../usr/local/lib/cmake/Catch2/Catch2Targets-release.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\..\..\..\usr\local\lib\cmake\Catch2\"/>
+		</Unit>
+		<Unit filename="/Users/luis-work/Documents/code/opt-py-cpp/src-cpp/../../../../../../usr/local/lib/cmake/Catch2/Catch2Targets.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\..\..\..\usr\local\lib\cmake\Catch2\"/>
+		</Unit>
+		<Unit filename="/Users/luis-work/Documents/code/opt-py-cpp/src-cpp/tests/CMakeLists.txt">
+			<Option virtualFolder="CMake Files\tests\"/>
+		</Unit>
+	</Project>
+</CodeBlocks_project_file>

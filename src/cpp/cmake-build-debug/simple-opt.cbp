@@ -1,0 +1,363 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CodeBlocks_project_file>
+	<FileVersion major="1" minor="6"/>
+	<Project>
+		<Option title="simple-opt"/>
+		<Option makefile_is_custom="1"/>
+		<Option compiler="gcc"/>
+		<Option virtualFolders="CMake Files\;CMake Files\cmake-build-debug\;CMake Files\cmake-build-debug\_deps\;CMake Files\cmake-build-debug\_deps\pybind11-src\;CMake Files\cmake-build-debug\_deps\pybind11-src\tools\;CMake Files\src\;CMake Files\..\;CMake Files\..\..\;CMake Files\..\..\..\;CMake Files\..\..\..\..\;CMake Files\..\..\..\..\..\;CMake Files\..\..\..\..\..\..\;CMake Files\..\..\..\..\..\..\usr\;CMake Files\..\..\..\..\..\..\usr\local\;CMake Files\..\..\..\..\..\..\usr\local\share\;CMake Files\..\..\..\..\..\..\usr\local\share\eigen3\;CMake Files\..\..\..\..\..\..\usr\local\share\eigen3\cmake\;CMake Files\..\..\..\..\..\..\usr\local\lib\;CMake Files\..\..\..\..\..\..\usr\local\lib\cmake\;CMake Files\..\..\..\..\..\..\usr\local\lib\cmake\Catch2\;CMake Files\bind\;CMake Files\tests\;"/>
+		<Build>
+			<Target title="all">
+				<Option working_dir="/Users/luis-work/Documents/code/opt-py-cpp/src-cpp/cmake-build-debug"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j4 -f &quot;/Users/luis-work/Documents/code/opt-py-cpp/src-cpp/cmake-build-debug/Makefile&quot;  VERBOSE=1 all"/>
+					<CompileFile command="/usr/bin/make -j4 -f &quot;/Users/luis-work/Documents/code/opt-py-cpp/src-cpp/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j4 -f &quot;/Users/luis-work/Documents/code/opt-py-cpp/src-cpp/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j4 -f &quot;/Users/luis-work/Documents/code/opt-py-cpp/src-cpp/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="test">
+				<Option working_dir="/Users/luis-work/Documents/code/opt-py-cpp/src-cpp/cmake-build-debug"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j4 -f &quot;/Users/luis-work/Documents/code/opt-py-cpp/src-cpp/cmake-build-debug/Makefile&quot;  VERBOSE=1 test"/>
+					<CompileFile command="/usr/bin/make -j4 -f &quot;/Users/luis-work/Documents/code/opt-py-cpp/src-cpp/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j4 -f &quot;/Users/luis-work/Documents/code/opt-py-cpp/src-cpp/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j4 -f &quot;/Users/luis-work/Documents/code/opt-py-cpp/src-cpp/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="edit_cache">
+				<Option working_dir="/Users/luis-work/Documents/code/opt-py-cpp/src-cpp/cmake-build-debug"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j4 -f &quot;/Users/luis-work/Documents/code/opt-py-cpp/src-cpp/cmake-build-debug/Makefile&quot;  VERBOSE=1 edit_cache"/>
+					<CompileFile command="/usr/bin/make -j4 -f &quot;/Users/luis-work/Documents/code/opt-py-cpp/src-cpp/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j4 -f &quot;/Users/luis-work/Documents/code/opt-py-cpp/src-cpp/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j4 -f &quot;/Users/luis-work/Documents/code/opt-py-cpp/src-cpp/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="rebuild_cache">
+				<Option working_dir="/Users/luis-work/Documents/code/opt-py-cpp/src-cpp/cmake-build-debug"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j4 -f &quot;/Users/luis-work/Documents/code/opt-py-cpp/src-cpp/cmake-build-debug/Makefile&quot;  VERBOSE=1 rebuild_cache"/>
+					<CompileFile command="/usr/bin/make -j4 -f &quot;/Users/luis-work/Documents/code/opt-py-cpp/src-cpp/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j4 -f &quot;/Users/luis-work/Documents/code/opt-py-cpp/src-cpp/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j4 -f &quot;/Users/luis-work/Documents/code/opt-py-cpp/src-cpp/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="list_install_components">
+				<Option working_dir="/Users/luis-work/Documents/code/opt-py-cpp/src-cpp/cmake-build-debug"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j4 -f &quot;/Users/luis-work/Documents/code/opt-py-cpp/src-cpp/cmake-build-debug/Makefile&quot;  VERBOSE=1 list_install_components"/>
+					<CompileFile command="/usr/bin/make -j4 -f &quot;/Users/luis-work/Documents/code/opt-py-cpp/src-cpp/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j4 -f &quot;/Users/luis-work/Documents/code/opt-py-cpp/src-cpp/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j4 -f &quot;/Users/luis-work/Documents/code/opt-py-cpp/src-cpp/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="install">
+				<Option working_dir="/Users/luis-work/Documents/code/opt-py-cpp/src-cpp/cmake-build-debug"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j4 -f &quot;/Users/luis-work/Documents/code/opt-py-cpp/src-cpp/cmake-build-debug/Makefile&quot;  VERBOSE=1 install"/>
+					<CompileFile command="/usr/bin/make -j4 -f &quot;/Users/luis-work/Documents/code/opt-py-cpp/src-cpp/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j4 -f &quot;/Users/luis-work/Documents/code/opt-py-cpp/src-cpp/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j4 -f &quot;/Users/luis-work/Documents/code/opt-py-cpp/src-cpp/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="install/local">
+				<Option working_dir="/Users/luis-work/Documents/code/opt-py-cpp/src-cpp/cmake-build-debug"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j4 -f &quot;/Users/luis-work/Documents/code/opt-py-cpp/src-cpp/cmake-build-debug/Makefile&quot;  VERBOSE=1 install/local"/>
+					<CompileFile command="/usr/bin/make -j4 -f &quot;/Users/luis-work/Documents/code/opt-py-cpp/src-cpp/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j4 -f &quot;/Users/luis-work/Documents/code/opt-py-cpp/src-cpp/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j4 -f &quot;/Users/luis-work/Documents/code/opt-py-cpp/src-cpp/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="install/strip">
+				<Option working_dir="/Users/luis-work/Documents/code/opt-py-cpp/src-cpp/cmake-build-debug"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j4 -f &quot;/Users/luis-work/Documents/code/opt-py-cpp/src-cpp/cmake-build-debug/Makefile&quot;  VERBOSE=1 install/strip"/>
+					<CompileFile command="/usr/bin/make -j4 -f &quot;/Users/luis-work/Documents/code/opt-py-cpp/src-cpp/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j4 -f &quot;/Users/luis-work/Documents/code/opt-py-cpp/src-cpp/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j4 -f &quot;/Users/luis-work/Documents/code/opt-py-cpp/src-cpp/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="quad_function">
+				<Option output="/Users/luis-work/Documents/code/opt-py-cpp/src-cpp/cmake-build-debug/src/libquad_function.a" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/Users/luis-work/Documents/code/opt-py-cpp/src-cpp/cmake-build-debug/src"/>
+				<Option object_output="./"/>
+				<Option type="2"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="/usr/local/include/eigen3"/>
+					<Add directory="/Library/Developer/CommandLineTools/usr/bin/../include/c++/v1"/>
+					<Add directory="/usr/local/include"/>
+					<Add directory="/Library/Developer/CommandLineTools/usr/lib/clang/13.0.0/include"/>
+					<Add directory="/Library/Developer/CommandLineTools/usr/include"/>
+					<Add directory="/System/Library/Frameworks"/>
+					<Add directory="/Library/Frameworks"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j4 -f &quot;/Users/luis-work/Documents/code/opt-py-cpp/src-cpp/cmake-build-debug/src/Makefile&quot;  VERBOSE=1 quad_function"/>
+					<CompileFile command="/usr/bin/make -j4 -f &quot;/Users/luis-work/Documents/code/opt-py-cpp/src-cpp/cmake-build-debug/src/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j4 -f &quot;/Users/luis-work/Documents/code/opt-py-cpp/src-cpp/cmake-build-debug/src/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j4 -f &quot;/Users/luis-work/Documents/code/opt-py-cpp/src-cpp/cmake-build-debug/src/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="quad_function/fast">
+				<Option output="/Users/luis-work/Documents/code/opt-py-cpp/src-cpp/cmake-build-debug/src/libquad_function.a" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/Users/luis-work/Documents/code/opt-py-cpp/src-cpp/cmake-build-debug/src"/>
+				<Option object_output="./"/>
+				<Option type="2"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="/usr/local/include/eigen3"/>
+					<Add directory="/Library/Developer/CommandLineTools/usr/bin/../include/c++/v1"/>
+					<Add directory="/usr/local/include"/>
+					<Add directory="/Library/Developer/CommandLineTools/usr/lib/clang/13.0.0/include"/>
+					<Add directory="/Library/Developer/CommandLineTools/usr/include"/>
+					<Add directory="/System/Library/Frameworks"/>
+					<Add directory="/Library/Frameworks"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j4 -f &quot;/Users/luis-work/Documents/code/opt-py-cpp/src-cpp/cmake-build-debug/src/Makefile&quot;  VERBOSE=1 quad_function/fast"/>
+					<CompileFile command="/usr/bin/make -j4 -f &quot;/Users/luis-work/Documents/code/opt-py-cpp/src-cpp/cmake-build-debug/src/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j4 -f &quot;/Users/luis-work/Documents/code/opt-py-cpp/src-cpp/cmake-build-debug/src/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j4 -f &quot;/Users/luis-work/Documents/code/opt-py-cpp/src-cpp/cmake-build-debug/src/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="main">
+				<Option output="/Users/luis-work/Documents/code/opt-py-cpp/src-cpp/cmake-build-debug/src/main" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/Users/luis-work/Documents/code/opt-py-cpp/src-cpp/cmake-build-debug/src"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="/usr/local/include/eigen3"/>
+					<Add directory="/Library/Developer/CommandLineTools/usr/bin/../include/c++/v1"/>
+					<Add directory="/usr/local/include"/>
+					<Add directory="/Library/Developer/CommandLineTools/usr/lib/clang/13.0.0/include"/>
+					<Add directory="/Library/Developer/CommandLineTools/usr/include"/>
+					<Add directory="/System/Library/Frameworks"/>
+					<Add directory="/Library/Frameworks"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j4 -f &quot;/Users/luis-work/Documents/code/opt-py-cpp/src-cpp/cmake-build-debug/src/Makefile&quot;  VERBOSE=1 main"/>
+					<CompileFile command="/usr/bin/make -j4 -f &quot;/Users/luis-work/Documents/code/opt-py-cpp/src-cpp/cmake-build-debug/src/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j4 -f &quot;/Users/luis-work/Documents/code/opt-py-cpp/src-cpp/cmake-build-debug/src/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j4 -f &quot;/Users/luis-work/Documents/code/opt-py-cpp/src-cpp/cmake-build-debug/src/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="main/fast">
+				<Option output="/Users/luis-work/Documents/code/opt-py-cpp/src-cpp/cmake-build-debug/src/main" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/Users/luis-work/Documents/code/opt-py-cpp/src-cpp/cmake-build-debug/src"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="/usr/local/include/eigen3"/>
+					<Add directory="/Library/Developer/CommandLineTools/usr/bin/../include/c++/v1"/>
+					<Add directory="/usr/local/include"/>
+					<Add directory="/Library/Developer/CommandLineTools/usr/lib/clang/13.0.0/include"/>
+					<Add directory="/Library/Developer/CommandLineTools/usr/include"/>
+					<Add directory="/System/Library/Frameworks"/>
+					<Add directory="/Library/Frameworks"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j4 -f &quot;/Users/luis-work/Documents/code/opt-py-cpp/src-cpp/cmake-build-debug/src/Makefile&quot;  VERBOSE=1 main/fast"/>
+					<CompileFile command="/usr/bin/make -j4 -f &quot;/Users/luis-work/Documents/code/opt-py-cpp/src-cpp/cmake-build-debug/src/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j4 -f &quot;/Users/luis-work/Documents/code/opt-py-cpp/src-cpp/cmake-build-debug/src/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j4 -f &quot;/Users/luis-work/Documents/code/opt-py-cpp/src-cpp/cmake-build-debug/src/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="quad">
+				<Option output="/Users/luis-work/Documents/code/opt-py-cpp/src-cpp/cmake-build-debug/bind/quad.cpython-39-darwin.so" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/Users/luis-work/Documents/code/opt-py-cpp/src-cpp/cmake-build-debug/bind"/>
+				<Option object_output="./"/>
+				<Option type="3"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="/Users/luis-work/Documents/code/opt-py-cpp/src-cpp/include"/>
+					<Add directory="/Users/luis-work/Documents/code/opt-py-cpp/src-cpp/cmake-build-debug/_deps/pybind11-src/include"/>
+					<Add directory="/Library/Developer/CommandLineTools/usr/bin/../include/c++/v1"/>
+					<Add directory="/usr/local/include"/>
+					<Add directory="/Library/Developer/CommandLineTools/usr/lib/clang/13.0.0/include"/>
+					<Add directory="/Library/Developer/CommandLineTools/usr/include"/>
+					<Add directory="/System/Library/Frameworks"/>
+					<Add directory="/Library/Frameworks"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j4 -f &quot;/Users/luis-work/Documents/code/opt-py-cpp/src-cpp/cmake-build-debug/bind/Makefile&quot;  VERBOSE=1 quad"/>
+					<CompileFile command="/usr/bin/make -j4 -f &quot;/Users/luis-work/Documents/code/opt-py-cpp/src-cpp/cmake-build-debug/bind/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j4 -f &quot;/Users/luis-work/Documents/code/opt-py-cpp/src-cpp/cmake-build-debug/bind/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j4 -f &quot;/Users/luis-work/Documents/code/opt-py-cpp/src-cpp/cmake-build-debug/bind/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="quad/fast">
+				<Option output="/Users/luis-work/Documents/code/opt-py-cpp/src-cpp/cmake-build-debug/bind/quad.cpython-39-darwin.so" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/Users/luis-work/Documents/code/opt-py-cpp/src-cpp/cmake-build-debug/bind"/>
+				<Option object_output="./"/>
+				<Option type="3"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="/Users/luis-work/Documents/code/opt-py-cpp/src-cpp/include"/>
+					<Add directory="/Users/luis-work/Documents/code/opt-py-cpp/src-cpp/cmake-build-debug/_deps/pybind11-src/include"/>
+					<Add directory="/Library/Developer/CommandLineTools/usr/bin/../include/c++/v1"/>
+					<Add directory="/usr/local/include"/>
+					<Add directory="/Library/Developer/CommandLineTools/usr/lib/clang/13.0.0/include"/>
+					<Add directory="/Library/Developer/CommandLineTools/usr/include"/>
+					<Add directory="/System/Library/Frameworks"/>
+					<Add directory="/Library/Frameworks"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j4 -f &quot;/Users/luis-work/Documents/code/opt-py-cpp/src-cpp/cmake-build-debug/bind/Makefile&quot;  VERBOSE=1 quad/fast"/>
+					<CompileFile command="/usr/bin/make -j4 -f &quot;/Users/luis-work/Documents/code/opt-py-cpp/src-cpp/cmake-build-debug/bind/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j4 -f &quot;/Users/luis-work/Documents/code/opt-py-cpp/src-cpp/cmake-build-debug/bind/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j4 -f &quot;/Users/luis-work/Documents/code/opt-py-cpp/src-cpp/cmake-build-debug/bind/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="quad_tests">
+				<Option output="/Users/luis-work/Documents/code/opt-py-cpp/src-cpp/cmake-build-debug/tests/quad_tests" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/Users/luis-work/Documents/code/opt-py-cpp/src-cpp/cmake-build-debug/tests"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="/usr/local/include/eigen3"/>
+					<Add directory="/usr/local/include"/>
+					<Add directory="/Library/Developer/CommandLineTools/usr/bin/../include/c++/v1"/>
+					<Add directory="/Library/Developer/CommandLineTools/usr/lib/clang/13.0.0/include"/>
+					<Add directory="/Library/Developer/CommandLineTools/usr/include"/>
+					<Add directory="/System/Library/Frameworks"/>
+					<Add directory="/Library/Frameworks"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j4 -f &quot;/Users/luis-work/Documents/code/opt-py-cpp/src-cpp/cmake-build-debug/tests/Makefile&quot;  VERBOSE=1 quad_tests"/>
+					<CompileFile command="/usr/bin/make -j4 -f &quot;/Users/luis-work/Documents/code/opt-py-cpp/src-cpp/cmake-build-debug/tests/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j4 -f &quot;/Users/luis-work/Documents/code/opt-py-cpp/src-cpp/cmake-build-debug/tests/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j4 -f &quot;/Users/luis-work/Documents/code/opt-py-cpp/src-cpp/cmake-build-debug/tests/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="quad_tests/fast">
+				<Option output="/Users/luis-work/Documents/code/opt-py-cpp/src-cpp/cmake-build-debug/tests/quad_tests" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/Users/luis-work/Documents/code/opt-py-cpp/src-cpp/cmake-build-debug/tests"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="/usr/local/include/eigen3"/>
+					<Add directory="/usr/local/include"/>
+					<Add directory="/Library/Developer/CommandLineTools/usr/bin/../include/c++/v1"/>
+					<Add directory="/Library/Developer/CommandLineTools/usr/lib/clang/13.0.0/include"/>
+					<Add directory="/Library/Developer/CommandLineTools/usr/include"/>
+					<Add directory="/System/Library/Frameworks"/>
+					<Add directory="/Library/Frameworks"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j4 -f &quot;/Users/luis-work/Documents/code/opt-py-cpp/src-cpp/cmake-build-debug/tests/Makefile&quot;  VERBOSE=1 quad_tests/fast"/>
+					<CompileFile command="/usr/bin/make -j4 -f &quot;/Users/luis-work/Documents/code/opt-py-cpp/src-cpp/cmake-build-debug/tests/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j4 -f &quot;/Users/luis-work/Documents/code/opt-py-cpp/src-cpp/cmake-build-debug/tests/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j4 -f &quot;/Users/luis-work/Documents/code/opt-py-cpp/src-cpp/cmake-build-debug/tests/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="Experimental">
+				<Option working_dir="/Users/luis-work/Documents/code/opt-py-cpp/src-cpp/cmake-build-debug/tests"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j4 -f &quot;/Users/luis-work/Documents/code/opt-py-cpp/src-cpp/cmake-build-debug/tests/Makefile&quot;  VERBOSE=1 Experimental"/>
+					<CompileFile command="/usr/bin/make -j4 -f &quot;/Users/luis-work/Documents/code/opt-py-cpp/src-cpp/cmake-build-debug/tests/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j4 -f &quot;/Users/luis-work/Documents/code/opt-py-cpp/src-cpp/cmake-build-debug/tests/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j4 -f &quot;/Users/luis-work/Documents/code/opt-py-cpp/src-cpp/cmake-build-debug/tests/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="Nightly">
+				<Option working_dir="/Users/luis-work/Documents/code/opt-py-cpp/src-cpp/cmake-build-debug/tests"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j4 -f &quot;/Users/luis-work/Documents/code/opt-py-cpp/src-cpp/cmake-build-debug/tests/Makefile&quot;  VERBOSE=1 Nightly"/>
+					<CompileFile command="/usr/bin/make -j4 -f &quot;/Users/luis-work/Documents/code/opt-py-cpp/src-cpp/cmake-build-debug/tests/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j4 -f &quot;/Users/luis-work/Documents/code/opt-py-cpp/src-cpp/cmake-build-debug/tests/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j4 -f &quot;/Users/luis-work/Documents/code/opt-py-cpp/src-cpp/cmake-build-debug/tests/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="Continuous">
+				<Option working_dir="/Users/luis-work/Documents/code/opt-py-cpp/src-cpp/cmake-build-debug/tests"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j4 -f &quot;/Users/luis-work/Documents/code/opt-py-cpp/src-cpp/cmake-build-debug/tests/Makefile&quot;  VERBOSE=1 Continuous"/>
+					<CompileFile command="/usr/bin/make -j4 -f &quot;/Users/luis-work/Documents/code/opt-py-cpp/src-cpp/cmake-build-debug/tests/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j4 -f &quot;/Users/luis-work/Documents/code/opt-py-cpp/src-cpp/cmake-build-debug/tests/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j4 -f &quot;/Users/luis-work/Documents/code/opt-py-cpp/src-cpp/cmake-build-debug/tests/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+		</Build>
+		<Unit filename="/Users/luis-work/Documents/code/opt-py-cpp/src-cpp/bind/bindings.cpp">
+			<Option target="quad"/>
+		</Unit>
+		<Unit filename="/Users/luis-work/Documents/code/opt-py-cpp/src-cpp/include/quad_function.hpp">
+			<Option target="quad_function"/>
+		</Unit>
+		<Unit filename="/Users/luis-work/Documents/code/opt-py-cpp/src-cpp/src/main.cpp">
+			<Option target="main"/>
+		</Unit>
+		<Unit filename="/Users/luis-work/Documents/code/opt-py-cpp/src-cpp/src/quad_function.cpp">
+			<Option target="quad_function"/>
+		</Unit>
+		<Unit filename="/Users/luis-work/Documents/code/opt-py-cpp/src-cpp/tests/quad_function_test.cpp">
+			<Option target="quad_tests"/>
+		</Unit>
+		<Unit filename="/Users/luis-work/Documents/code/opt-py-cpp/src-cpp/CMakeLists.txt">
+			<Option virtualFolder="CMake Files\"/>
+		</Unit>
+		<Unit filename="/Users/luis-work/Documents/code/opt-py-cpp/src-cpp/cmake-build-debug/_deps/pybind11-src/CMakeLists.txt">
+			<Option virtualFolder="CMake Files\cmake-build-debug\_deps\pybind11-src\"/>
+		</Unit>
+		<Unit filename="/Users/luis-work/Documents/code/opt-py-cpp/src-cpp/cmake-build-debug/_deps/pybind11-src/tools/FindPythonLibsNew.cmake">
+			<Option virtualFolder="CMake Files\cmake-build-debug\_deps\pybind11-src\tools\"/>
+		</Unit>
+		<Unit filename="/Users/luis-work/Documents/code/opt-py-cpp/src-cpp/cmake-build-debug/_deps/pybind11-src/tools/pybind11Common.cmake">
+			<Option virtualFolder="CMake Files\cmake-build-debug\_deps\pybind11-src\tools\"/>
+		</Unit>
+		<Unit filename="/Users/luis-work/Documents/code/opt-py-cpp/src-cpp/cmake-build-debug/_deps/pybind11-src/tools/pybind11Tools.cmake">
+			<Option virtualFolder="CMake Files\cmake-build-debug\_deps\pybind11-src\tools\"/>
+		</Unit>
+		<Unit filename="/Users/luis-work/Documents/code/opt-py-cpp/src-cpp/src/CMakeLists.txt">
+			<Option virtualFolder="CMake Files\src\"/>
+		</Unit>
+		<Unit filename="/Users/luis-work/Documents/code/opt-py-cpp/src-cpp/../../../../../../usr/local/share/eigen3/cmake/Eigen3Config.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\..\..\..\usr\local\share\eigen3\cmake\"/>
+		</Unit>
+		<Unit filename="/Users/luis-work/Documents/code/opt-py-cpp/src-cpp/../../../../../../usr/local/share/eigen3/cmake/Eigen3ConfigVersion.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\..\..\..\usr\local\share\eigen3\cmake\"/>
+		</Unit>
+		<Unit filename="/Users/luis-work/Documents/code/opt-py-cpp/src-cpp/../../../../../../usr/local/share/eigen3/cmake/Eigen3Targets.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\..\..\..\usr\local\share\eigen3\cmake\"/>
+		</Unit>
+		<Unit filename="/Users/luis-work/Documents/code/opt-py-cpp/src-cpp/../../../../../../usr/local/lib/cmake/Catch2/Catch.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\..\..\..\usr\local\lib\cmake\Catch2\"/>
+		</Unit>
+		<Unit filename="/Users/luis-work/Documents/code/opt-py-cpp/src-cpp/../../../../../../usr/local/lib/cmake/Catch2/Catch2Config.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\..\..\..\usr\local\lib\cmake\Catch2\"/>
+		</Unit>
+		<Unit filename="/Users/luis-work/Documents/code/opt-py-cpp/src-cpp/../../../../../../usr/local/lib/cmake/Catch2/Catch2ConfigVersion.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\..\..\..\usr\local\lib\cmake\Catch2\"/>
+		</Unit>
+		<Unit filename="/Users/luis-work/Documents/code/opt-py-cpp/src-cpp/../../../../../../usr/local/lib/cmake/Catch2/Catch2Targets-release.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\..\..\..\usr\local\lib\cmake\Catch2\"/>
+		</Unit>
+		<Unit filename="/Users/luis-work/Documents/code/opt-py-cpp/src-cpp/../../../../../../usr/local/lib/cmake/Catch2/Catch2Targets.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\..\..\..\usr\local\lib\cmake\Catch2\"/>
+		</Unit>
+		<Unit filename="/Users/luis-work/Documents/code/opt-py-cpp/src-cpp/bind/CMakeLists.txt">
+			<Option virtualFolder="CMake Files\bind\"/>
+		</Unit>
+		<Unit filename="/Users/luis-work/Documents/code/opt-py-cpp/src-cpp/tests/CMakeLists.txt">
+			<Option virtualFolder="CMake Files\tests\"/>
+		</Unit>
+	</Project>
+</CodeBlocks_project_file>
