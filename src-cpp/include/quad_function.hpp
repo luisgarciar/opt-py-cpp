@@ -15,7 +15,6 @@
 
 namespace py = pybind11;
 
-
 class quadFunction {
   // Class for a quadratic Function of the form
   // f(x) = 0.5 * (x^T * mat * x) + b^T * x
@@ -38,7 +37,7 @@ class quadFunction {
   // Evaluation Functions
   double eval (py::EigenDRef<Eigen::VectorXd> x) const;  // Evaluate the function at x
 
-  py::EigenDRef<Eigen::VectorXd> grad (py::EigenDRef<Eigen::VectorXd> x) const; // Evaluate the gradient at x
+  Eigen::VectorXd grad (py::EigenDRef<Eigen::VectorXd> x) const; // Evaluate the gradient at x
 
 };
 

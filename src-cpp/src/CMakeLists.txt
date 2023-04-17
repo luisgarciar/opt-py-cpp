@@ -17,16 +17,10 @@ if(NOT pybind11_POPULATED)
 endif()
 FetchContent_MakeAvailable(pybind11)
 
-
-
 # Add library and link with Eigen
 add_library(quad_function STATIC ../include/quad_function.hpp quad_function.cpp)
 target_include_directories(quad_function PUBLIC ../include)
 target_link_libraries(quad_function PUBLIC Eigen3::Eigen pybind11::module)
-
-add_library(simple_class STATIC ../include/simple_class.hpp simple_class.cpp)
-target_include_directories(simple_class PUBLIC ../include)
-target_link_libraries(simple_class PUBLIC Eigen3::Eigen)
 
 
 # Add the executable main and link the library quad_function and the executable main

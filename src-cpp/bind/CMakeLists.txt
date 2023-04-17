@@ -22,13 +22,7 @@ include_directories("${PROJECT_SOURCE_DIR}/src-cpp/include")
 pybind11_add_module(quad MODULE  bindings.cpp)  
 #Link the module to the pybind11 library and the quad_function library
 target_link_libraries(quad PUBLIC quad_function pybind11::module)
-install(TARGETS quad DESTINATION .) #Install in CMake install directory set in setup.py
-
-
-# Create the python module defined in simple_class.cpp
-#pybind11_add_module(simp MODULE simplebindings.cpp)
-#target_include_directories(simp PUBLIC ../include)
-#target_link_libraries(simp PUBLIC simple_class pybind11::module)
+install(TARGETS quad DESTINATION .)
 
 
 #install(TARGETS quad DESTINATION CMAKE_SOURCE_DIR/src-python)
