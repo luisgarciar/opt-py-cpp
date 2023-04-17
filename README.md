@@ -11,8 +11,8 @@ To compile and build the test functions, you will need
 a C++ compiler and the CMake and Make build systems. We also use 
 the Eigen library for linear algebra operations.
 
-To install the C++ requirements on Ubuntu using the ```apt-get``` package manager, 
-run the following commands in a terminal window:
+To install the C++ requirements on Ubuntu Linux (and similar)
+using the ```apt-get``` package manager, run the following commands in a terminal window:
 
 ```bash
     sudo apt-get install gcc g++ cmake make libeigen3-dev lib
