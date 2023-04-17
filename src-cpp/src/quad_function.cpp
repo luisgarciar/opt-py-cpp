@@ -10,22 +10,14 @@
 #include "../include/quad_function.hpp"
 #include <iostream>
 
-
 quadFunction::quadFunction (py::EigenDRef<Eigen::MatrixXd> mat_in, py::EigenDRef<Eigen::VectorXd> b_in)
 	:
 	mat (mat_in), b (b_in)
 {
 
-  if (mat.rows () != mat.cols ())
-	{
-	  std::cout << "Error: Incorrect dimensions of the input matrix" << std::endl;
-	}
+  set_mat (mat_in);
+  set_b (b_in);
 
-  // Check if the dimensions of the input vector are compatible with the matrix
-  if (b.rows () != mat.rows ())
-	{
-	  std::cout << "Error: Incompatible dimensions of the input matrix and vector" << std::endl;
-	}
 }
 
 void quadFunction::set_mat (py::EigenDRef<Eigen::MatrixXd> mat_in)
@@ -34,9 +26,13 @@ void quadFunction::set_mat (py::EigenDRef<Eigen::MatrixXd> mat_in)
   // Check if the dimensions of the input matrix are correct
   if (mat_in.rows () != mat_in.cols ())
 	{
-	  std::cout << "Error: Incorrect dimensions of the input matrix" << std::endl;
+	  //std::cout << "Error: Incorrect dimensions of the input matrix" << std::endl;
+	  throw std::invalid_argument ("Input matrix must be a square matrix");
 	}
-  mat = mat_in;
+  else
+	{
+	  mat = mat_in;
+	}
 }
 
 void quadFunction::set_b (py::EigenDRef<Eigen::VectorXd> b_in)
@@ -44,17 +40,21 @@ void quadFunction::set_b (py::EigenDRef<Eigen::VectorXd> b_in)
   // Check if the dimensions of the input vector are correct
   if (b_in.rows () != mat.rows ())
 	{
-	  std::cout << "Error: Incorrect dimensions of the input vector" << std::endl;
+	  //std::cout << "Error: Incorrect dimensions of the input vector" << std::endl;
+	  throw std::invalid_argument ("\"Input vector must be compatible with the matrix");
 	}
-  b = b_in;
+  else
+	{
+	  b = b_in;
+	}
 }
 
-py::EigenDRef<Eigen::MatrixXd> quadFunction::get_mat () const
+Eigen::MatrixXd quadFunction::get_mat () const
 {// Getter Method for the matrix mat
   return mat;
 }
 
-py::EigenDRef<Eigen::VectorXd> quadFunction::get_b () const
+Eigen::VectorXd quadFunction::get_b () const
 {// Getter Method for the vector b
   return b;
 }
@@ -64,12 +64,15 @@ double quadFunction::eval (py::EigenDRef<Eigen::VectorXd> x) const
   // Check if the dimensions of the input vector are correct
   if (x.rows () != mat.rows ())
 	{
-	  std::cout << "Error: Incorrect dimensions of the input vector" << std::endl;
-	  return 0;
+	  //std::cout  "Error: Incorrect dimensions of the input vector" << std::endl;
+	  throw std::invalid_argument ("Input vector must be compatible with the quadratic function");
 	}
+  else
+	{
 
-  // Evaluate the function at x
-  return 0.5 * double ((x.transpose () * (mat * x))) + double ((b.transpose () * x));
+	  // Evaluate the function at x
+	  return 0.5 * double ((x.transpose () * (mat * x))) + double ((b.transpose () * x));
+	}
 }
 
 Eigen::VectorXd quadFunction::grad (py::EigenDRef<Eigen::VectorXd> x) const
@@ -78,11 +81,12 @@ Eigen::VectorXd quadFunction::grad (py::EigenDRef<Eigen::VectorXd> x) const
   // Check if the dimensions of the input vector are correct
   if (x.rows () != mat.rows ())
 	{
-	  std::cout << "Error: The dimensions of the input vector are not correct" << std::endl;
+	  throw std::invalid_argument ("Input vector must be compatible with the quadratic function");
 	}
-  // Evaluate the gradient at x
-
-  return (mat * x) + b;
- //return (mat * x) ;
+	else
+	{
+	  // Evaluate the gradient at x
+	  return (mat * x) + b;
+	}
 }
 

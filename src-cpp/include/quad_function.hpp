@@ -15,6 +15,12 @@
 
 namespace py = pybind11;
 
+// We use py:EigenDRef to avoid copying the data and
+// compatibility with default row ordering in
+// numpy arrays
+// See https://pybind11.readthedocs.io/en/stable/advanced/pycpp/numpy.html
+
+
 class quadFunction {
   // Class for a quadratic Function of the form
   // f(x) = 0.5 * (x^T * mat * x) + b^T * x
@@ -31,8 +37,8 @@ class quadFunction {
   void set_b (py::EigenDRef<Eigen::VectorXd> b_in);
 
   // Getter Functions
-  py::EigenDRef<Eigen::MatrixXd> get_mat () const;
-  py::EigenDRef<Eigen::VectorXd> get_b () const;
+  Eigen::MatrixXd get_mat () const;
+  Eigen::VectorXd get_b () const;
 
   // Evaluation Functions
   double eval (py::EigenDRef<Eigen::VectorXd> x) const;  // Evaluate the function at x
