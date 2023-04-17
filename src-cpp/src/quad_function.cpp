@@ -11,7 +11,7 @@
 #include <iostream>
 
 
-quadFunction::quadFunction (const py::EigenDRef<Eigen::MatrixXd> mat_in, const py::EigenDRef<Eigen::VectorXd> b_in)
+quadFunction::quadFunction (py::EigenDRef<Eigen::MatrixXd> mat_in, py::EigenDRef<Eigen::VectorXd> b_in)
 	:
 	mat (mat_in), b (b_in)
 {
@@ -28,7 +28,7 @@ quadFunction::quadFunction (const py::EigenDRef<Eigen::MatrixXd> mat_in, const p
 	}
 }
 
-void quadFunction::set_mat (const py::EigenDRef<Eigen::MatrixXd> mat_in)
+void quadFunction::set_mat (py::EigenDRef<Eigen::MatrixXd> mat_in)
 // Setter Method for the matrix mat
 {
   // Check if the dimensions of the input matrix are correct
@@ -39,7 +39,7 @@ void quadFunction::set_mat (const py::EigenDRef<Eigen::MatrixXd> mat_in)
   mat = mat_in;
 }
 
-void quadFunction::set_b (const py::EigenDRef<Eigen::VectorXd> b_in)
+void quadFunction::set_b (py::EigenDRef<Eigen::VectorXd> b_in)
 {// Setter Method for the vector b
   // Check if the dimensions of the input vector are correct
   if (b_in.rows () != mat.rows ())
@@ -59,7 +59,7 @@ py::EigenDRef<Eigen::VectorXd> quadFunction::get_b () const
   return b;
 }
 
-double quadFunction::eval (const py::EigenDRef<Eigen::VectorXd> x) const
+double quadFunction::eval (py::EigenDRef<Eigen::VectorXd> x) const
 {// Method for evaluating the function f(x) = 0.5 * x^T * mat * x + b^T * x
   // Check if the dimensions of the input vector are correct
   if (x.rows () != mat.rows ())
@@ -72,7 +72,7 @@ double quadFunction::eval (const py::EigenDRef<Eigen::VectorXd> x) const
   return 0.5 * double ((x.transpose () * (mat * x))) + double ((b.transpose () * x));
 }
 
-py::EigenDRef<Eigen::VectorXd> quadFunction::grad (py::EigenDRef<Eigen::VectorXd> x) const
+Eigen::VectorXd quadFunction::grad (py::EigenDRef<Eigen::VectorXd> x) const
 { // Method for the gradient of the function f(x) = 0.5 * x^T * mat * x + b^T * x
   // grad(f)(x) = mat * x + b
   // Check if the dimensions of the input vector are correct
@@ -81,6 +81,8 @@ py::EigenDRef<Eigen::VectorXd> quadFunction::grad (py::EigenDRef<Eigen::VectorXd
 	  std::cout << "Error: The dimensions of the input vector are not correct" << std::endl;
 	}
   // Evaluate the gradient at x
-  return mat ;
+
+  return (mat * x) + b;
+ //return (mat * x) ;
 }
 
