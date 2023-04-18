@@ -1,0 +1,11 @@
+LICENSE
+README.md
+setup.py
+simpleopt.egg-info/PKG-INFO
+simpleopt.egg-info/SOURCES.txt
+simpleopt.egg-info/dependency_links.txt
+simpleopt.egg-info/not-zip-safe
+simpleopt.egg-info/top_level.txt
+src/simpleopt/__init__.py
+src/simpleopt/opt.py
+src/simpleopt/quad_func.py
