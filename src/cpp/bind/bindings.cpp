@@ -24,8 +24,8 @@ def(py::init<py::EigenDRef < Eigen::MatrixXd>, py::EigenDRef<Eigen::VectorXd>>
 .def_property("matrix", &quadFunction::get_mat, &quadFunction::set_mat)
 .def_property("vector", &quadFunction::get_vec, &quadFunction::set_vec)
 .def("eval", &quadFunction::eval, "Evaluates the quadratic function at the given point",
-py::arg("x"), py::return_value_policy::take_ownership )
+py::arg("x"), py::return_value_policy::take_ownership)
 .def("grad", &quadFunction::grad, "Evaluates the gradient of the quadratic function at the given point", py::arg("x"),
-py::return_value_policy::reference_take_ownership) );
+py::return_value_policy::take_ownership);
 }
 

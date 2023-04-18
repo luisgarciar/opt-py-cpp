@@ -3,7 +3,7 @@
 from typing import Callable, Tuple
 
 import numpy as np
-from numpy.typing import ArrayLike
+from numpy.typing import ArrayLike, NDArray
 
 
 class problem:
@@ -40,36 +40,42 @@ class problem:
 
         self.f = f
         self.gradf = gradf
-        self.prob_type = prob_type
         self.dim = dim
+
+        if prob_type not in ["min", "max"]:
+            raise ValueError("prob_type must be either 'min' or 'max'")
+
+        self.prob_type = prob_type
         self.method = method
         self.info = {}
         self.solution = None
 
     def steepest_descent(
         self: object,
-        x0=None,
-        tol=1e-6,
+        x0: ArrayLike = None,
+        tol: float = 1e-6,
         alpha: float = 1.0,
-        maxiter=None,
+        maxiter=150,
     ) -> Tuple[ArrayLike, dict]:
         """Steepest descent method for minimizing a scalar valued function f(x).
         :param self: Optimization problem
         :type self: object
         :param x0: Initial point
-        :type x0: NdArray
+        :type x0: ArrayLike
         :param alpha: Step size
         :type alpha: float
-        :param tol: Tolerance for stopping the algorithm
+        :param tol: Tolerance for stopping the algorithm when the norm of the gradient is less than tol
         :type tol: float
         :param maxiter: Maximum number of iterations
         :type maxiter: int
 
         :return:
         sol, info : Optimal point and additional information
-        :rtype: Tuple(NdArray, dict)
+        :rtype: Tuple(ArrayLike, dict)
         """
-        x = np.random.rand((self.dim,))
+        if x0 is None:
+            x = np.random.rand(self.dim)
+
         iter_count = 0
         iter_fvalues = np.zeros(maxiter, dtype=float)
         self.info["iter_fvalues"] = iter_fvalues
@@ -86,12 +92,12 @@ class problem:
             func = self.f
             grad = self.gradf
 
-        while iter_count < self.maxiter:
+        while iter_count < maxiter:
             # compute gradient and function value at current point
             gradient = grad(x)
             iter_fvalues[iter_count] = self.f(x)
             # check if gradient is small enough to stop
-            if np.linalg.norm(gradient) < self.tol:
+            if np.linalg.norm(gradient) < tol:
                 self.info["converged"] = True
                 break
             # set search direction as negative gradient
@@ -135,6 +141,6 @@ if __name__ == "__main__":
         return np.array([2 * x[0], 2 * x[1]])
 
     # define optimization problem
-    prob = problem(f, gradf, x0=np.array([1.0, 1.0]), method="steepest_descent")
+    prob = problem(f, gradf, dim=2, method="steepest_descent")
     # solve optimization problem
     sol, info = prob.solve()
