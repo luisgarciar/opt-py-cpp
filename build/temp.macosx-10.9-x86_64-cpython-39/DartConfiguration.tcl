@@ -4,8 +4,8 @@
 
 
 # Configuration directories and files
-SourceDirectory: /Users/luis-work/Documents/code/simpleoptgithub/ghsimpleopt/src/cpp
-BuildDirectory: /Users/luis-work/Documents/code/simpleoptgithub/ghsimpleopt/build/temp.macosx-10.9-x86_64-cpython-39
+SourceDirectory: /Users/luis-work/Documents/code/simpleopt/src/cpp
+BuildDirectory: /Users/luis-work/Documents/code/simpleopt/build/temp.macosx-10.9-x86_64-cpython-39
 
 # Where to place the cost data store
 CostDataFile: 
@@ -27,7 +27,7 @@ SubmitInactivityTimeout:
 NightlyStartTime: 00:00:00 EDT
 
 # Commands for the build/test/submit cycle
-ConfigureCommand: "/usr/local/Cellar/cmake/3.26.3/bin/cmake" "/Users/luis-work/Documents/code/simpleoptgithub/ghsimpleopt/src/cpp"
+ConfigureCommand: "/usr/local/Cellar/cmake/3.26.3/bin/cmake" "/Users/luis-work/Documents/code/simpleopt/src/cpp"
 MakeCommand: /usr/local/Cellar/cmake/3.26.3/bin/cmake --build . --config "${CTEST_CONFIGURATION_TYPE}"
 DefaultCTestConfigurationType: Release
 
