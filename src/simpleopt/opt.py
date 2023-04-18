@@ -3,6 +3,7 @@
 from typing import Callable, Tuple
 
 import numpy as np
+from numpy.testing import assert_allclose
 from numpy.typing import ArrayLike, NDArray
 
 
@@ -65,23 +66,64 @@ class Problem:
         sol, info Tuple(NdArray, dict): Optimal point and additional information
         """
         if x0 is None:
-            x = np.random.rand(self.dim)
+            x = np.random.rand(self.dim).astype(np.float64)
         else:
-            x = np.asarray(x0).flatten()
+            x = np.asarray(x0).flatten().astype(np.float64)
 
         if maxiter is None:
             maxiter = self.dim * 150
 
         if self.method == "steepest_descent":
             return steepest_descent(
-                self, x0=x0, gtol=gtol, alpha=alpha, maxiter=maxiter
+                self, x0=x, gtol=gtol, alpha=alpha, maxiter=maxiter
             )
         elif self.method == "conjugate_gradient":
             return conjugate_gradient(
-                self, x0=x0, gtol=gtol, alpha=alpha, maxiter=maxiter
+                self, x0=x, gtol=gtol, alpha=alpha, maxiter=maxiter
             )
         else:
             raise NotImplementedError("Method not implemented")
+
+
+def line_search(
+    f: Callable,
+    direction: ArrayLike,
+    x: ArrayLike,
+    alpha: float = 1.0,
+    beta: float = 0.5,
+    maxiter: int = 100,
+):
+    """Line search algorithm with Armijo condition for finding the step size alpha
+     that minimizes the function f(x + alpha * direction).
+    :param f: Function to be minimized
+    :type f: callable
+    :param direction: Direction of search
+    :type direction: ArrayLike
+    :param x: Current point
+    :type x: ArrayLike
+    :param alpha: Initial step size
+    :type alpha: float
+    :param beta: Step size reduction factor
+    :type beta: float
+    :param maxiter: Maximum number of iterations
+    :type maxiter: int
+
+    :return:
+    alpha, converged : Optimal step size and boolean variable indicating whether the algorithm converged
+    :rtype: Tuple(float, Bool)
+    """
+    iter_count = 0
+    t = alpha
+
+    while f(x + t * direction) > (
+        f(x) - beta * t * np.linalg.norm(direction) ** 2
+    ):  # Armijo condition
+        t = t * beta
+        iter_count += 1
+        if iter_count > maxiter or t < 1e-20:
+            converged = False
+            return t, converged
+    return t, True
 
 
 def steepest_descent(
@@ -91,9 +133,9 @@ def steepest_descent(
     alpha: float = 1.0,
     maxiter: int = None,
 ) -> Tuple[ArrayLike, dict]:
-    """Steepest descent method for minimizing a scalar valued function f(x).
-    :param self: Optimization problem
-    :type self: object
+    """Steepest descent method for minimizing a scalar valued function f(x) of given gradient with Armijo line search.
+    :param problem: Optimization problem
+    :type problem: object of class Problem
     :param x0: Initial point
     :type x0: ArrayLike
     :param alpha: Step size
@@ -105,12 +147,17 @@ def steepest_descent(
 
     :return:
     sol, info : Optimal point and additional information
+        info = {"converged": bool, "iter_fvalues": np.ndarray, "iter_count": ¡nt}
+        converged : bool : True if the algorithm converged
+        iter_fvalues : np.ndarray : Function values at each iteration
+        iter_count : int : Number of iterations
+
     :rtype: Tuple(ArrayLike, dict)
     """
     if x0 is None:
-        x = np.random.rand(problem.dim)
+        x = np.random.rand(problem.dim).astype(np.float64)
     else:
-        x = np.asarray(x0).flatten()
+        x = np.asarray(x0).flatten().astype(np.float64)
 
     if maxiter is None:
         maxiter = 1000 * problem.dim
@@ -118,9 +165,11 @@ def steepest_descent(
         maxiter = int(maxiter)
 
     iter_count = 0
+    info = {}
     iter_fvalues = np.zeros(maxiter, dtype=float)
-    problem.info["iter_fvalues"] = iter_fvalues
-    problem.info["converged"] = False
+    info["iter_fvalues"] = iter_fvalues
+    info["converged"] = False
+
     if problem.prob_type == "max":
 
         def func(x):
@@ -137,34 +186,34 @@ def steepest_descent(
         # compute gradient and function value at current point
         gradient = grad(x)
         iter_fvalues[iter_count] = problem.f(x)
+
         # check if gradient is small enough to stop
         if np.linalg.norm(gradient) < gtol:
-            problem.info["converged"] = True
+            info["converged"] = True
             break
+
         # set search direction as negative gradient
         direction = -gradient
-        # set step size
-        step_size = alpha
-        # perform line search to find optimal step size
-        while func(x + step_size * direction) > func(x) + step_size * 0.1 * np.dot(
-            gradient, direction
-        ):
-            step_size *= 0.5
-        # update x with the step
-        x = x + step_size * direction
+        # set step size using line search
+        step_size, converged = line_search(func, direction, x)
+        if converged:  # if line search converged, update x
+            x = x + step_size * direction
+        else:  # if line search did not converge, stop
+            break  # TODO: maybe try to reduce step size and continue
+            info["converged"] = False
         iter_count += 1
 
-    problem.info["iter_count"] = iter_count
-    problem.solution = x
-    return x, problem.info
+    info["iter_count"] = iter_count
+    return x, info
 
 
 def conjugate_gradient(
-    self, x0: ArrayLike = None, gtol: float = 1e-6, alpha: float = 1, maxiter=None
+    problem, x0: ArrayLike = None, gtol: float = 1e-6, alpha: float = 1, maxiter=None
 ) -> Tuple[ArrayLike, dict]:
-    """Conjugate gradient method of Fletcher-Reeves for minimizing a convex scalar valued function f(x).
-    :param self: Optimization problem
-    :type self: object
+    """Conjugate gradient method with Fletcher-Reeves rule and Armijo line search for minimizing a  scalar valued
+    function f(x).
+    :param problem: Object of class Problem
+    :type problem: object
     :param x0: Initial point
     :type x0: ArrayLike
     :param gtol: Tolerance for stopping the algorithm when the norm of the gradient is less than tol
@@ -175,75 +224,87 @@ def conjugate_gradient(
     :type maxiter: int
     """
 
-    #
+    # Sanitize input and initialize variables
     if x0 is None:
-        x = np.random.rand(self.dim)
+        x = np.random.rand(problem.dim)
     else:
         x = np.asarray(x0).flatten()
 
     if maxiter is None:
-        maxiter = self.dim * 150
+        maxiter = problem.dim * 150
 
     iter_count = 0
     iter_fvalues = np.zeros(maxiter, dtype=float)
-    self.info["iter_fvalues"] = iter_fvalues
-    self.info["converged"] = False
-    if self.prob_type == "max":
+    info = {}
+    info["iter_fvalues"] = iter_fvalues
+    info["converged"] = False
+
+    if problem.prob_type == "max":
 
         def func(x):
-            return -self.f(x)
+            return -problem.f(x)
 
         def grad(x):
-            return -self.gradf(x)
+            return -problem.gradf(x)
 
     else:
-        func = self.f
-        grad = self.gradf
+        func = problem.f
+        grad = problem.gradf
+
+    # initialize conjugate gradient direction
+    grad0 = grad(x)
+    direction = -grad0
 
     while iter_count < maxiter:
-        # compute gradient and function value at current point
-        gradient0 = grad(x)
-        iter_fvalues[iter_count] = self.f(x)
-        # check if gradient is small enough to stop
-        if np.linalg.norm(gradient0) < gtol:
-            self.info["converged"] = True
+        # Do line search to find step size
+        step_size, converged = line_search(func, direction, x)
+        if converged:  # if line search converged, update x
+            x = x + step_size * direction
+        else:  # if line search did not converge, stop and return
+            info["converged"] = False
+            iter_count += 1
+            break  # TODO: maybe try to reduce step size and continue
+
+        # compute new gradient and function value, check stopping criterion
+        grad1 = -grad(x)
+        iter_fvalues[iter_count] = func(x)
+        if np.linalg.norm(grad1) < gtol:
+            info["converged"] = True
             break
 
-        # set descent direction using Fletcher-Reeves formula
-        if iter_count == 0:
-            direction = -gradient0
-        else:
-            beta = np.dot(gradient0, gradient0) / np.dot(gradient1, gradient1)
-            direction = -gradient0 + beta * direction
-
-        # set step size
-        step_size = alpha
-        # perform line search to find optimal step size
-        while func(x + step_size * direction) > func(x) + step_size * 0.1 * np.dot(
-            gradient0, direction
-        ):
-            step_size *= 0.5
-
-        # update x with the step size and direction
-        x = x + step_size * direction
+        #set step size using Fletcher-Reeves rule
+        beta = np.dot(grad1, grad1) / np.dot(grad0, grad0)
+        # update descent direction
+        direction = grad1 + beta * direction
         iter_count += 1
-        gradient1 = gradient0
 
-    self.info["iter_count"] = iter_count
-    self.info["fvalues"] = iter_fvalues[:iter_count]
-    self.solution = x
-    return x, self.info
+    info["iter_count"] = iter_count
+    info["fvalues"] = iter_fvalues[:iter_count]
+    return x, info
 
 
 if __name__ == "__main__":
-    # define objective function and gradient
-    def f(x):
-        return x[0] ** 2 + x[1] ** 2
+    dim = 5
+    vec = np.array([1, 2, 3, 4, 5])
+    A = np.diag(vec)
+    b = np.ones((dim,))
+    # Exact solution
+    sol_exact = np.linalg.solve(A, -b)
 
-    def gradf(x):
-        return np.array([2 * x[0], 2 * x[1]])
+    def f(x):
+        return 0.5 * (x.T @ (A @ x)) + b.T @ x
+
+    def grad(x):
+        return A @ x + b
 
     # define optimization problem
-    prob = Problem(f, gradf, dim=2, method="steepest_descent")
-    # solve optimization problem
-    sol, info = prob.solve()
+    x0 = np.zeros((dim,))
+    prob = Problem(f, grad, dim, prob_type="min", method="conjugate_gradient")
+    # run conjugate gradient algorithm with default parameters
+    sol, info = prob.solve(x0=x0, gtol=1e-8, maxiter=1000)
+    # check that the algorithm converged
+    assert info["converged"]
+    # check that the solution is correct
+    assert_allclose(sol, sol_exact, atol=1e-6)
+
+

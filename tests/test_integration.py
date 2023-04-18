@@ -1,31 +1,58 @@
 import numpy as np
 import pytest
+import quad
 from hypothesis import given
 from hypothesis import strategies as st
 from hypothesis.extra import numpy as nps
 from numpy.testing import assert_allclose
-from quad import function
-from simpleopt.opt import Problem
+from simpleopt import opt
 
 
-def test_integration_normal_input():
+def test_integration_steepest_descent():
     """Test of opt.solve and quad.function with normal inputs"""
-    A = np.array([[1, 2, 3], [4, 5, 6], [7, 8, 9]], dtype=np.float64)
-    b = np.array([1, 2, 3], dtype=np.float64)
-    I = np.eye(3, dtype=np.float64)
+    dim = 5
+    vec = np.array([1, 2, 3, 4, 5], dtype=np.float64)
+    A = np.diag(vec)
+    b = np.ones((dim,), dtype=np.float64)
+    # Exact solution
+    exact_sol = np.linalg.solve(A, -b)
 
-    # Define function and exact solution
-    # f(x) = 0.5*(x^T(A^T A + I)x) - b^T x
-
-    f = function(A.T @ A + I, -b)
-    exact_sol = np.linalg.solve(A.T @ A + I, b)
+    # Define quadratic function f(x) = 0.5 * x.T @ A @ x + b.T @ x using quad module
+    f = quad.function(A, b)
 
     # Define optimization problem
-    prob = Problem(f.eval, f.grad, dim=3, prob_type="min", method="steepest_descent")
+    prob = opt.Problem(f.eval, f.grad, dim, prob_type="min", method="steepest_descent")
 
-    # Solve optimization problem with conjugate gradient method
-    sol, info = prob.solve(maxiter=20, gtol=1e-6)
+    # Solve optimization problem with the steepest descent method
+    x0 = np.zeros((dim,)).astype(np.float64)
+    sol, info = prob.solve(x0=x0, gtol=1e-8, maxiter=1000)
 
+    # Check that the algorithm converged and that the solution is correct
+    assert info["converged"]
+    assert_allclose(sol, exact_sol, atol=1e-6, equal_nan=True)
+
+
+def test_integration_conj_grad():
+    """Test of opt.solve and quad.function with normal inputs"""
+    dim = 5
+    vec = np.array([1, 2, 3, 4, 5], dtype=np.float64)
+    A = np.diag(vec)
+    b = np.ones((dim,), dtype=np.float64)
+    # Exact solution
+    exact_sol = np.linalg.solve(A, -b)
+
+    # Define quadratic function f(x) = 0.5 * x.T @ A @ x + b.T @ x using quad module
+    f = quad.function(A, b)
+
+    # Define optimization problem
+    prob = opt.Problem(f.eval, f.grad, dim, prob_type="min", method="conjugate_gradient")
+
+    # Solve optimization problem with the steepest descent method
+    x0 = np.zeros((dim,)).astype(np.float64)
+    sol, info = prob.solve(x0=x0, gtol=1e-8, maxiter=100)
+
+    # Check that the algorithm converged and that the solution is correct
+    assert info["converged"]
     assert_allclose(sol, exact_sol, atol=1e-6, equal_nan=True)
 
 
@@ -53,4 +80,5 @@ def test_integration_normal_input():
 #
 #     # Solve optimization problem with conjugate gradient method
 #     sol, info = prob.solve(maxiter=20, gtol=1e-6)
+
 #     assert_allclose(sol, exact_sol, atol=1e-4, equal_nan=True) or not info["converged"]
