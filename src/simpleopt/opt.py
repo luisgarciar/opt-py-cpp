@@ -14,14 +14,12 @@ class problem:
     """
 
     def __init__(
-            self: object,
-            f: Callable,
-            gradf: Callable,
-            x0: ArrayLike,
-            prob_type: str = "min",
-            tol: float = 1e-6,
-            maxiter: int = 1000,
-            method: str = None,
+        self: object,
+        f: Callable,
+        gradf: Callable,
+        dim: int,
+        prob_type: str = "min",
+        method: str = None,
     ) -> object:
         """Initialize the problem class.
         :param self: Optimization problem
@@ -30,45 +28,50 @@ class problem:
          :type f: callable
         :param gradf: Gradient of the function to be optimized
         :type gradf: callable
-        :param x0: Initial point
-        :type x0: NdArray
+        :param dim: Dimension of the optimization problem
+        :type dim: int
         :param prob_type: Type of optimization problem ('min' or 'max')
         :type prob_type: str
-        :param tol: Tolerance for stopping the algorithm
-        :type tol: float
-        :param maxiter: Maximum number of iterations
-        :type maxiter: int
         :param method: Optimization method to use
         :type method: str
-
         :return: self: Optimization problem
         :rtype: object
         """
 
         self.f = f
         self.gradf = gradf
-        self.x0 = x0
         self.prob_type = prob_type
-        self.tol = tol
-        self.maxiter = maxiter
+        self.dim = dim
         self.method = method
         self.info = {}
         self.solution = None
 
-    def steepest_descent(self: object, alpha: float = 1.0) -> Tuple[ArrayLike, dict]:
+    def steepest_descent(
+        self: object,
+        x0=None,
+        tol=1e-6,
+        alpha: float = 1.0,
+        maxiter=None,
+    ) -> Tuple[ArrayLike, dict]:
         """Steepest descent method for minimizing a scalar valued function f(x).
         :param self: Optimization problem
         :type self: object
+        :param x0: Initial point
+        :type x0: NdArray
         :param alpha: Step size
         :type alpha: float
+        :param tol: Tolerance for stopping the algorithm
+        :type tol: float
+        :param maxiter: Maximum number of iterations
+        :type maxiter: int
 
         :return:
         sol, info : Optimal point and additional information
         :rtype: Tuple(NdArray, dict)
         """
-        x = self.x0
+        x = np.random.rand((self.dim,))
         iter_count = 0
-        iter_fvalues = np.zeros((self.maxiter,), dtype=float)
+        iter_fvalues = np.zeros(maxiter, dtype=float)
         self.info["iter_fvalues"] = iter_fvalues
         self.info["converged"] = False
         if self.prob_type == "max":
@@ -97,7 +100,7 @@ class problem:
             step_size = alpha
             # perform line search to find optimal step size
             while func(x + step_size * direction) > func(x) + step_size * 0.1 * np.dot(
-                    gradient, direction
+                gradient, direction
             ):
                 step_size *= 0.5
             # update x with the step
@@ -128,10 +131,8 @@ if __name__ == "__main__":
     def f(x):
         return x[0] ** 2 + x[1] ** 2
 
-
     def gradf(x):
         return np.array([2 * x[0], 2 * x[1]])
-
 
     # define optimization problem
     prob = problem(f, gradf, x0=np.array([1.0, 1.0]), method="steepest_descent")

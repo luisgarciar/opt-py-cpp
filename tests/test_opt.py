@@ -12,13 +12,10 @@ def test_scalar_steepest_descent():
     f = lambda x: x[0] ** 2 + x[1] ** 2
     gradf = lambda x: np.array([2 * x[0], 2 * x[1]])
 
-    # define initial point
-    x0 = np.array([rd.random(), rd.random()])
-
     # define optimization problem
-    prob = problem(f, gradf, x0)
+    prob = problem(f, gradf, dim=2, prob_type="min")
 
-    # run steepest descent algorithm
+    # run steepest descent algorithm with default parameters
     sol, info = prob.steepest_descent()
 
     # check that the algorithm converged
