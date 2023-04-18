@@ -285,9 +285,9 @@ def conjugate_gradient(
 
 if __name__ == "__main__":
     dim = 5
-    vec = np.array([1, 2, 3, 4, 5])
+    vec = np.array([1, 2, 3, 4, 5], dtype=np.float64)
     A = np.diag(vec)
-    b = np.ones((dim,))
+    b = np.ones((dim,), dtype=np.float64)
     # Exact solution
     sol_exact = np.linalg.solve(A, -b)
 
@@ -299,12 +299,28 @@ if __name__ == "__main__":
 
     # define optimization problem
     x0 = np.zeros((dim,))
-    prob = Problem(f, grad, dim, prob_type="min", method="conjugate_gradient")
+    prob1 = Problem(f, grad, dim, prob_type="min", method="conjugate_gradient")
     # run conjugate gradient algorithm with default parameters
-    sol, info = prob.solve(x0=x0, gtol=1e-8, maxiter=1000)
+    sol1, info1 = prob1.solve(x0=x0, gtol=1e-8, maxiter=50)
     # check that the algorithm converged
-    assert info["converged"]
+    assert info1["converged"]
     # check that the solution is correct
-    assert_allclose(sol, sol_exact, atol=1e-6)
+    assert_allclose(sol1, sol_exact, atol=1e-6)
+
+
+    # define optimization problem
+    # Define quadratic function f(x) = 0.5 * x.T @ A @ x + b.T @ x using quad module
+    import quad
+    f = quad.function(A, b)
+    # Define optimization problem
+    prob2 = Problem(f.eval, f.grad, dim, prob_type="min", method="conjugate_gradient")
+    # Solve optimization problem with the conjugate gradient algorithm
+    x0 = np.zeros((dim,)).astype(np.float64)
+    sol2, info2 = prob2.solve(x0=x0, gtol=1e-6, maxiter=50)
+
+    # Check that the algorithm converged and that the solution is correct
+    assert info2["converged"]
+    assert_allclose(sol2, sol_exact, atol=1e-6, equal_nan=True)
+
 
 
