@@ -17,19 +17,17 @@ endif()
 FetchContent_MakeAvailable(pybind11)
 
 # Directory where the header files are located
-include_directories("${PROJECT_SOURCE_DIR}/src-cpp/include")
+include_directories("${CMAKE_SOURCE_DIR}/src/cpp/include")
 # Create the python module defined in bindings.cpp
-pybind11_add_module(quad MODULE  bindings.cpp)  
+pybind11_add_module(quad SHARED bindings.cpp)
 #Link the module to the pybind11 library and the quad_function library
 target_link_libraries(quad PUBLIC quad_function pybind11::module)
-install(TARGETS quad DESTINATION .)
 
 
-#install(TARGETS quad DESTINATION CMAKE_SOURCE_DIR/src-python)
+
+#install(TARGETS quad DESTINATION .)
+#install(TARGETS quad DESTINATION CMAKE_SOURCE_DIR)
 #install(TARGETS simp DESTINATION CMAKE_SOURCE_DIR/src-python)
-
-
-
 # Not working -- fetch pybind11 from github if not found
 ## Check if pybind11 is already installed, otherwise fetch it from github
 #if (NOT pybind11_FOUND)

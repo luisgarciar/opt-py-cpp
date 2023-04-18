@@ -86,12 +86,13 @@ setup(
     author_email='luisgarciar@gmail.com',
     description='A hybrid Python/C++ optimization tool',
     long_description='',
-    package_dir={'': 'src-py'},
-    py_modules=['opt'],
-    # ext_package='quad',
-    ext_modules=[CMakeExtension('src-cpp')],
-    cmake_install_dir="/src-py",
+    packages=["simpleopt"],
+    package_dir={"simpleopt": 'src/simpleopt'},
+    ext_modules=[CMakeExtension(name='quad', sourcedir='src/cpp')],
+    # cmake_install_dir="src/simpleopt",
     # add custom build_ext command
     cmdclass=dict(build_ext=CMakeBuild),
     zip_safe=False,
 )
+
+# ext_package='quad',
