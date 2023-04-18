@@ -23,22 +23,22 @@ namespace py = pybind11;
 
 class quadFunction {
   // Class for a quadratic Function of the form
-  // f(x) = 0.5 * (x^T * mat * x) + b^T * x
+  // f(x) = 0.5 * (x^T * mat * x) + vec^T * x
  private:
   py::EigenDRef<Eigen::MatrixXd> mat;
-  py::EigenDRef<Eigen::VectorXd> b;
+  py::EigenDRef<Eigen::VectorXd> vec;
 
  public:
   // Constructor
-  quadFunction (py::EigenDRef<Eigen::MatrixXd> mat_in, py::EigenDRef<Eigen::VectorXd> b_in);
+  quadFunction (py::EigenDRef<Eigen::MatrixXd> mat_in, py::EigenDRef<Eigen::VectorXd> vec_in);
 
   // Setter Functions
   void set_mat (py::EigenDRef<Eigen::MatrixXd> mat_in);
-  void set_b (py::EigenDRef<Eigen::VectorXd> b_in);
+  void set_vec (py::EigenDRef<Eigen::VectorXd> vec_in);
 
   // Getter Functions
   Eigen::MatrixXd get_mat () const;
-  Eigen::VectorXd get_b () const;
+  Eigen::VectorXd get_vec () const;
 
   // Evaluation Functions
   double eval (py::EigenDRef<Eigen::VectorXd> x) const;  // Evaluate the function at x
