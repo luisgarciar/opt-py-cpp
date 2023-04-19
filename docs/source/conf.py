@@ -29,6 +29,11 @@ extensions = [
     "sphinx.ext.autosummary",
     "sphinx.ext.mathjax",
 ]
+
+mathjax_path = (
+    "https://cdn.jsdelivr.net/npm/mathjax@2/MathJax.js?config=TeX-AMS-MML_HTMLorMML"
+)
+
 # exclude_patterns = [_build]
 templates_path = ["_templates"]
 master_doc = "index"
