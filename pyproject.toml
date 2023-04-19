@@ -1,0 +1,25 @@
+[project]
+name = "simpleopt"
+version = "0.0.1"
+description = "I/O for many mesh formats"
+description = 'A hybrid Python/C++ optimization tool'
+authors = [{ name = "Luis Garcia Ramos" }, { email = "luisgarciar@gmail.com" }]
+readme = "README.md"
+requires-python = ">=3.7"
+license = { file = "LICENSE.txt" }
+
+dependencies = ["numpy>=1.20.0"]
+
+
+[project.urls]
+homepage = "https://github.com/luisgarciar/simpleopt"
+
+[build-system]
+requires = ["setuptools>=42", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[tool.isort]
+profile = "black"
+
+
+
