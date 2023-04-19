@@ -17,7 +17,7 @@ m.
 doc () = "Module for defining quadratic functions of the form "
 		 " f(x) = 0.5*(x.T @ A @ x) + b.T @ x"; // optional module docstring
 py::class_<quadFunction>(m,
-"function", "A function of the form f(x) = 0.5*(x.T @ A @ x) + b.T @ x")
+"Function", "A function of the form f(x) = 0.5*(x.T @ A @ x) + b.T @ x")
 .
 def(py::init<py::EigenDRef < Eigen::MatrixXd>, py::EigenDRef<Eigen::VectorXd>>
 ())
