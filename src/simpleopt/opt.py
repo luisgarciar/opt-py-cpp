@@ -1,4 +1,3 @@
-"""Optimization routines for maximizing/minimizing a scalar valued function f(x)."""
 # from __future__ import annotations
 
 from typing import Callable, Tuple
@@ -67,7 +66,11 @@ class Problem:
         :type alpha: float
         :param maxiter: Maximum number of iterations
         :type maxiter: int
-        :return: sol, info :  Optimal point and additional information
+        :return: sol: Optimal point
+        :rtype: NDArray
+        :return info :  Dictionary with additional information about the optimization solve.
+        :rtype info: dict
+
         """
         if x0 is None:
             x = np.random.rand(self.dim).astype(np.float64)
@@ -110,8 +113,10 @@ def line_search(
     :type beta: float
     :param maxiter: Maximum number of iterations
     :type maxiter: int
-    :return: alpha, converged: Optimal step size and boolean variable indicating whether the algorithm converged
-
+    :return: alpha: Optimal step size
+    :rtype alpha: float
+    :return: converged: Boolean variable indicating whether the algorithm converged
+    :rtype converged: bool
     """
     iter_count = 0
     t = alpha
@@ -134,7 +139,7 @@ def steepest_descent(
     alpha: float = 1.0,
     maxiter: int = None,
 ):
-    """Steepest descent method for minimizing a scalar valued function f(x) of given grasdient with Armijo line search.
+    """Steepest descent method for minimizing a scalar valued function f(x) of given gradient with Armijo line search.
 
     :param problem: Optimization problem
     :type problem: object of class Problem
@@ -146,10 +151,10 @@ def steepest_descent(
     :type gtol: float
     :param maxiter: Maximum number of iterations
     :type maxiter: int
-    :return:
-    sol, info : Optimal point and dictionary info. info["converged"] indicates whether the algorithm converged,
-    info["iter_fvalues"]contains the function values at each iteration, info["iter_count"] is the number of iterations.
-    the number of iterations.
+    :return: sol: Optimal point
+    :rtype sol: NDArray
+    :return: info : Dictionary with information about the optimization solve.
+    :rtype info: dict
     """
     if x0 is None:
         x = np.random.rand(problem.dim).astype(np.float64)
@@ -210,7 +215,7 @@ def conjugate_gradient(
     gtol: float = 1e-6,
     alpha: float = 1,
     maxiter=None,
-) -> Tuple[NDArray, dict]:
+):
     """Conjugate gradient method with Fletcher-Reeves rule and Armijo line search for minimizing a  scalar valued
     function f(x).
 
@@ -224,6 +229,10 @@ def conjugate_gradient(
     :type alpha: float
     :param maxiter: Maximum number of iterations
     :type maxiter: int
+    :return: sol: Optimal point
+    :rtype sol: NDArray
+    :return: info: Dictionary with information about the process.
+    :rtype info: dict
     """
 
     # Sanitize input and initialize variables
