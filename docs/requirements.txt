@@ -3,7 +3,7 @@ pip-tools
 myst-parser
 sphinx==3.4.3
 sphinx_autodoc_defaultargs==0.1.2
-jinja2
+Jinja2<3.1
 
 
 
