@@ -1,9 +1,12 @@
-name: mun
+name: simpleopt
 channels:
   - defaults
 dependencies:
-  - numpy
+  - numpy=1.21.5
   - python=3.9
-  - pytest
+  - numpy=1.23.5
+  - pytest=7.1.2
   - ninja
-prefix: /usr/local/anaconda3/envs/mun
+  - hypothesis=6.29.3
+  - myst-parser=1.0.0
+prefix: /usr/local/anaconda3/envs/simpleopt
