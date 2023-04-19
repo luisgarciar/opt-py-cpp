@@ -49,3 +49,4 @@ _deps
 /src-cpp/cmake-build-debug/
 /src-cpp/.idea/
 /src-cpp/build/
+build

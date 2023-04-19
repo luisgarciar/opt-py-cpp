@@ -12,6 +12,7 @@ class Problem:
     Sets up an optimization problem by defining the type of optimization problem (minimization or maximization),
     objective function, gradient, initial point, tolerance, maximum number of iterations, step size, and
     choice of optimization method."""
+
     def __init__(
         self: object,
         f: Callable,
