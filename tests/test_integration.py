@@ -21,7 +21,7 @@ def test_integration_steepest_descent():
     f = quad.function(A, b)
 
     # Define optimization problem
-    prob = opt.Problem(f.eval, f.grad, dim, prob_type="min", method="steepest_descent")
+    prob = opt.Problem(f.eval, f.grad, dim, prob_type="min", method="sd")
 
     # Solve optimization problem with the steepest descent method
     x0 = np.zeros((dim,)).astype(np.float64)
@@ -35,7 +35,7 @@ def test_integration_steepest_descent():
 def test_integration_conj_grad():
     """Test of opt.solve and quad.function with normal inputs"""
     dim = 5
-    vec = np.array([1, 2, 3, 4, 5], dtype=np.float64)
+    vec = np.array([5, 2, 3, 4, 1], dtype=np.float64)
     A = np.diag(vec)
     b = np.ones((dim,), dtype=np.float64)
     # Exact solution
@@ -44,9 +44,7 @@ def test_integration_conj_grad():
     # Define quadratic function f(x) = 0.5 * x.T @ A @ x + b.T @ x using quad module
     f = quad.function(A, b)
     # Define optimization problem
-    prob = opt.Problem(
-        f.eval, f.grad, dim, prob_type="min", method="conjugate_gradient"
-    )
+    prob = opt.Problem(f.eval, f.grad, dim, prob_type="min", method="cg")
     # Solve optimization problem with the conjugate gradient algorithm
     x0 = np.zeros((dim,)).astype(np.float64)
     sol2, info2 = prob.solve(x0=x0, gtol=1e-6, maxiter=50)

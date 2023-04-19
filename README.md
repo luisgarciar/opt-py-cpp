@@ -1,9 +1,12 @@
 ## Optimization tools with Python and C++
 
 This repository contains a collection of simple optimization tools
-written in Python along with test functions written in C++. 
+written in Python along with test functions written in C++. The test functions
+are written in C++ and bound to Python using the pybind11 library. The test functions
+are functions of the form
+    $$f(x) = x^{T} A x + b^{T} x$$
+where $A\in \mathbb{R}^{n \times n}$ and $b\in \mathbb{R}^{n}$ are given parameters.  
 
-The package pybind11 is used to bind the C++ functions to Python.
 
 ### Requirements and installation
 
@@ -15,10 +18,10 @@ To install the C++ requirements on Ubuntu Linux (and similar Debian-based distri
 using the ```apt-get``` package manager, run the following commands in a terminal window:
 
 ```bash
-    sudo apt-get install gcc g++ cmake make libeigen3-dev lib
+    sudo apt-get install gcc g++ cmake make libeigen3-dev
    ```
 
-In macOS you can install the C++ requirements using the package manager
+In macOS, you can install the C++ requirements using the package manager
 [Homebrew](https://brew.sh), by typing the following commands in a terminal window:
 
 ```bash
@@ -48,13 +51,13 @@ environment, run the following command:
 Alternatively, you can install the Python requirements using pip. In a terminal window, navigate to the root directory
 of the repository and run the following command:
 
-```bash
+``` bash
     pip install -r requirements.txt
    ```
 
-Next run the `setup.py` script using pip:
+Next, run the `setup.py` script using pip:
 
-``` bash
+```bash
     pip install .
 ```
 
@@ -68,3 +71,69 @@ command:
 If the installation was successful, you should not see any error messages.
 ### Usage
 
+To create a quadratic function, you can use the `Function` class in the `quad` module.
+Note that the numpy arrays passed to the constructor and to evaluate the function must be of `float64` type.
+An example is shown below.
+
+```python
+    import quad
+    import numpy as np
+
+    A = np.array([[1, 0], [0, 1]], dtype=np.float64)
+    b = np.array([1, 1], dtype=np.float64)
+    f = quad.Function(A, b)
+    x = np.array([1, 1], dtype=np.float64)
+    
+    print(f.eval(x))
+    print(f.grad(x))
+   ```
+
+To use the optimization tools, you can use the `Problem` class in the `simpleopt` module. First, you need to create
+an instance of the `Problem` class. To call the solver, the `solve` should be used. An example is shown below.
+For more information, see the documentation.
+
+```python
+    import simpleopt
+    import numpy as np
+    import quad
+
+    A = np.array([[6., 2.],
+                  [2., 6.]], dtype=np.float64)
+    b = np.array([1, 1], dtype=np.float64)
+    f = quad.Function(A, b)
+    x0 = np.array([1, 1], dtype=np.float64)
+    max_iter = 100
+
+    problem = simpleopt.Problem(f.eval, f.grad, dim=2, problem_type='min', method='sd')
+    sol, info = problem.solve(x0, max_iter=max_iter)
+   ```
+
+## Demo
+A simple example of how to use the package is shown in the file `demo.py`. To run the example, go to the root directory
+of the repository and run the following command:
+
+```bash
+    python demo.py
+   ```
+
+### Tests
+A test suite is provided in the `tests` directory. To run the tests, go to the root directory of the repository and run
+the following command:
+
+```bash
+    python -m pytest tests
+   ```
+
+### Documentation
+The documentation is provided in the `docs` directory. To build the documentation, navigate to the
+``docs`` directory of the repository and run the following command:
+
+```bash
+    make clean html
+   ```
+
+Alternatively, the documentation can be found [online](https://luisgarciar-simpleopt.readthedocs.io/en/latest/simpleopt.html). 
+
+### License
+
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.

@@ -21,7 +21,6 @@ where :math:`A \in \mathbb{R}^{n \times n}` and :math:`b,x \in \mathbb{R}^{n}`. 
 in C++ using the Eigen library for linear algebra computations, and is wrapped in Python using pybind11.
 
 
-
 The code is available at this `GitHub repository <https://github.com/luisgarciar/simpleopt>`_.
 
 Contents
@@ -32,42 +31,15 @@ Contents
    :caption: Contents:
 
    simpleopt
-.. quad
+   quad
 
 Requirements and Installation
 -----------------------------
 To build the C++ test functions simpleopt requires a C++ compiler, the CMake and Make build systems, and the Eigen
-library for linear algebra computations. For detailed installation instructions of these components see the  README file
-in the `repository <https://github.com/luisgarciar/simpleopt)>`_.
+library for linear algebra computations. For the optimization routines, Python 3.9 or higher is required, as well as
+a set of packages listed in the ``requirements.txt`` file in the root directory of the repository. For detailed
+installation instructions of these components see the  README file in the `repository <https://github.com/luisgarciar/simpleopt)>`_.
 
-For the optimization routines, Python 3.9 or higher is required. We recommend that you use a virtual environment.
-Download the source code from the repository and navigate in your terminal to the root directory of the repository.
-The command
-
-.. code-block::
-
-   bash pip install .
-
-runs the install script that compiles the C++ code and makes the package ``simpleopt``
-and the module ``quad`` available in your virtual environment.
-
-To test the installation, run the following command in your terminal:
-
-.. code-block:: bash
-
-   python import simpleopt; import quad
-
-If the installation was successful, no error messages should appear.
-
-Unit Tests
------------------------------
-A set of unit tests is included in the ``tests`` directory. They can be run using the ``pytest`` package and
-require the ``pytest`` and ``hypothesis`` packages to be installed.
-To run the tests, navigate to the root directory of the repository and run the following command in your terminal:
-
-.. code-block:: bash
-
-   pytest tests
 
 
 Indices and tables
