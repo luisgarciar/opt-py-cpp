@@ -1,4 +1,5 @@
 """Optimization routines for maximizing/minimizing a scalar valued function f(x)."""
+# from __future__ import annotations
 
 from typing import Callable, Tuple
 
@@ -8,10 +9,7 @@ from numpy.typing import ArrayLike, NDArray
 
 
 class Problem:
-    """A class for formulating an optimization problem.
-    Sets up an optimization problem by defining the type of optimization problem (minimization or maximization),
-    objective function, gradient, initial point, tolerance, maximum number of iterations, step size, and
-    choice of optimization method."""
+    """A class for formulating an optimization problem."""
 
     def __init__(
         self: object,
@@ -20,13 +18,13 @@ class Problem:
         dim: int,
         prob_type: str = "min",
         method: str = None,
-    ) -> object:
+    ):
         """Initialize the problem class.
 
         :param self: Optimization problem
         :type self: object
         :param f: Function to be optimized
-         :type f: callable
+        :type f: callable
         :param gradf: Gradient of the function to be optimized
         :type gradf: callable
         :param dim: Dimension of the optimization problem
@@ -35,8 +33,7 @@ class Problem:
         :type prob_type: str
         :param method: Optimization method to use ('steepest_descent' or 'conjugate_gradient')
         :type method: str
-        :return: self: Optimization problem
-        :rtype: object
+
         """
 
         self.f = f
@@ -53,17 +50,24 @@ class Problem:
 
     def solve(
         self: object,
-        x0: ArrayLike = None,
+        x0: NDArray = None,
         gtol: float = 1e-6,
         alpha: float = 1,
         maxiter: int = None,
-    ) -> Tuple[ArrayLike, dict]:
+    ):
         """Solve the optimization problem using the method specified in the constructor.
 
-        :raises [NotImplementedError]: Method not implemented
-
-        :return:
-        sol, info Tuple(NdArray, dict): Optimal point and additional information
+        :param self: Optimization problem
+        :type self: object
+        :param x0: Initial point
+        :type x0: NDArray
+        :param gtol: Tolerance for the gradient
+        :type gtol: float
+        :param alpha: Step size
+        :type alpha: float
+        :param maxiter: Maximum number of iterations
+        :type maxiter: int
+        :return: sol, info :  Optimal point and additional information
         """
         if x0 is None:
             x = np.random.rand(self.dim).astype(np.float64)
@@ -85,30 +89,29 @@ class Problem:
 
 def line_search(
     f: Callable,
-    direction: ArrayLike,
-    x: ArrayLike,
+    direction: NDArray,
+    x: NDArray,
     alpha: float = 1.0,
     beta: float = 0.5,
     maxiter: int = 100,
 ):
-    """Line search algorithm with Armijo condition for finding the step size alpha
-     that minimizes the function f(x + alpha * direction).
+    """Line search algorithm with Armijo condition for finding the step size
+     that minimizes a function at a given point towards a given direction.
+
     :param f: Function to be minimized
     :type f: callable
     :param direction: Direction of search
-    :type direction: ArrayLike
+    :type direction: NDArray
     :param x: Current point
-    :type x: ArrayLike
+    :type x: NDArray
     :param alpha: Initial step size
     :type alpha: float
     :param beta: Step size reduction factor
     :type beta: float
     :param maxiter: Maximum number of iterations
     :type maxiter: int
+    :return: alpha, converged: Optimal step size and boolean variable indicating whether the algorithm converged
 
-    :return:
-    alpha, converged : Optimal step size and boolean variable indicating whether the algorithm converged
-    :rtype: Tuple(float, Bool)
     """
     iter_count = 0
     t = alpha
@@ -126,31 +129,27 @@ def line_search(
 
 def steepest_descent(
     problem: object,
-    x0: ArrayLike = None,
+    x0: NDArray = None,
     gtol: float = 1e-6,
     alpha: float = 1.0,
     maxiter: int = None,
-) -> Tuple[ArrayLike, dict]:
-    """Steepest descent method for minimizing a scalar valued function f(x) of given gradient with Armijo line search.
+):
+    """Steepest descent method for minimizing a scalar valued function f(x) of given grasdient with Armijo line search.
+
     :param problem: Optimization problem
     :type problem: object of class Problem
     :param x0: Initial point
-    :type x0: ArrayLike
+    :type x0: NDArray
     :param alpha: Step size
     :type alpha: float
     :param gtol: Tolerance for stopping the algorithm when the norm of the gradient is less than tol
     :type gtol: float
     :param maxiter: Maximum number of iterations
     :type maxiter: int
-
     :return:
-    sol, info : Optimal point and additional information
-        info = {"converged": bool, "iter_fvalues": np.ndarray, "iter_count": ¡nt}
-        converged : bool : True if the algorithm converged
-        iter_fvalues : np.ndarray : Function values at each iteration
-        iter_count : int : Number of iterations
-
-    :rtype: Tuple(ArrayLike, dict)
+    sol, info : Optimal point and dictionary info. info["converged"] indicates whether the algorithm converged,
+    info["iter_fvalues"]contains the function values at each iteration, info["iter_count"] is the number of iterations.
+    the number of iterations.
     """
     if x0 is None:
         x = np.random.rand(problem.dim).astype(np.float64)
@@ -206,14 +205,19 @@ def steepest_descent(
 
 
 def conjugate_gradient(
-    problem, x0: ArrayLike = None, gtol: float = 1e-6, alpha: float = 1, maxiter=None
-) -> Tuple[ArrayLike, dict]:
+    problem,
+    x0: NDArray = None,
+    gtol: float = 1e-6,
+    alpha: float = 1,
+    maxiter=None,
+) -> Tuple[NDArray, dict]:
     """Conjugate gradient method with Fletcher-Reeves rule and Armijo line search for minimizing a  scalar valued
     function f(x).
+
     :param problem: Object of class Problem
     :type problem: object
     :param x0: Initial point
-    :type x0: ArrayLike
+    :type x0: NDArray
     :param gtol: Tolerance for stopping the algorithm when the norm of the gradient is less than tol
     :type gtol: float
     :param alpha: Step size

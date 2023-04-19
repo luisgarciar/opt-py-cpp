@@ -21,10 +21,7 @@ release = "0.0.1"
 
 extensions = [
     "myst_parser",
-    "sphinx.ext.duration",
-    "sphinx.ext.doctest",
     "sphinx.ext.autodoc",
-    "sphinx.ext.napoleon",
     "sphinx_rtd_theme",
     "sphinx.ext.autosummary",
     "sphinx.ext.mathjax",
@@ -40,6 +37,14 @@ master_doc = "index"
 # The name of the Pygments (syntax highlighting) style to use.
 pygments_style = "sphinx"
 autoclass_content = "both"
+autodoc_type_aliases = {
+    "Iterable": "Iterable",
+    "ArrayLike": "ArrayLike",
+    "NDArray": "NDArray",
+}
+autodoc_typehints_format = "short"
+autodoc_typehints = "description"
+
 
 # -- Options for HTML output -------------------------------------------------
 # https://www.sphinx-doc.org/en/master/usage/configuration.html#options-for-html-output

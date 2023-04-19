@@ -22,7 +22,7 @@ in C++ using the Eigen library for linear algebra computations, and is wrapped i
 
 
 
-The code is available on this `GitHub repository <https://github.com/luisgarciar/simpleopt>`_.
+The code is available at this `GitHub repository <https://github.com/luisgarciar/simpleopt>`_.
 
 Contents
 --------
@@ -41,10 +41,14 @@ library for linear algebra computations. For detailed installation instructions 
 in the `repository <https://github.com/luisgarciar/simpleopt)>`_.
 
 For the optimization routines, Python 3.9 or higher is required. We recommend that you use a virtual environment.
-
-
 Download the source code from the repository and navigate in your terminal to the root directory of the repository.
-The command ``pip install .`` runs the install script that compiles the C++ code and makes the package ``simpleopt``
+The command
+
+.. code-block::
+
+   bash pip install .
+
+runs the install script that compiles the C++ code and makes the package ``simpleopt``
 and the module ``quad`` available in your virtual environment.
 
 To test the installation, run the following command in your terminal:
