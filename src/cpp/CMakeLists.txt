@@ -6,4 +6,3 @@ add_subdirectory(bind)
 
 #Add the subdirectory with the tests
 # add_subdirectory(tests)   # not needed for now
-set()
