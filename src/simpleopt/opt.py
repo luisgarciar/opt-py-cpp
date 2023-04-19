@@ -31,7 +31,7 @@ class Problem:
         :type dim: int
         :param prob_type: Type of optimization problem ('min' or 'max')
         :type prob_type: str
-        :param method: Optimization method to use ('steepest_descent' or 'conjugate_gradient')
+        :param method: Optimization method to use ('sd' for steepest descent or 'cg' for conjugate gradient)
         :type method: str
 
         """
@@ -77,9 +77,9 @@ class Problem:
         if maxiter is None:
             maxiter = self.dim * 150
 
-        if self.method == "steepest_descent":
+        if self.method == "sd":
             return steepest_descent(self, x0=x, gtol=gtol, alpha=alpha, maxiter=maxiter)
-        elif self.method == "conjugate_gradient":
+        elif self.method == "cg":
             return conjugate_gradient(
                 self, x0=x, gtol=gtol, alpha=alpha, maxiter=maxiter
             )
@@ -287,7 +287,7 @@ def conjugate_gradient(
 
 if __name__ == "__main__":
     dim = 5
-    vec = np.array([1, 2, 3, 4, 5], dtype=np.float64)
+    vec = np.array([3, 1, 3, 1, 3], dtype=np.float64)
     A = np.diag(vec)
     b = np.ones((dim,), dtype=np.float64)
     # Exact solution
@@ -301,7 +301,7 @@ if __name__ == "__main__":
 
     # define optimization problem
     x0 = np.zeros((dim,))
-    prob1 = Problem(f, grad, dim, prob_type="min", method="conjugate_gradient")
+    prob1 = Problem(f, grad, dim, prob_type="min", method="cg")
     # run conjugate gradient algorithm with default parameters
     sol1, info1 = prob1.solve(x0=x0, gtol=1e-8, maxiter=50)
     # check that the algorithm converged
@@ -315,7 +315,7 @@ if __name__ == "__main__":
 
     f = quad.function(A, b)
     # Define optimization problem
-    prob2 = Problem(f.eval, f.grad, dim, prob_type="min", method="conjugate_gradient")
+    prob2 = Problem(f.eval, f.grad, dim, prob_type="min", method="cg")
     # Solve optimization problem with the conjugate gradient algorithm
     x0 = np.zeros((dim,)).astype(np.float64)
     sol2, info2 = prob2.solve(x0=x0, gtol=1e-6, maxiter=50)

@@ -17,7 +17,7 @@ sol_exact = np.linalg.solve(A, -b)
 f = Function(A, b)
 
 # Define optimization problem
-prob2 = Problem(f.eval, f.grad, dim, prob_type="min", method="conjugate_gradient")
+prob2 = Problem(f.eval, f.grad, dim, prob_type="min", method="cg")
 # Solve optimization problem with the conjugate gradient algorithm
 x0 = np.zeros((dim,)).astype(np.float64)
 sol2, info2 = prob2.solve(x0=x0, gtol=1e-6, maxiter=50)

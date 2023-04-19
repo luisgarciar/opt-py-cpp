@@ -20,7 +20,7 @@ def test_steepest_descent():
 
     # define optimization problem
     x0 = np.ones((dim,))
-    prob = Problem(f, grad, dim, prob_type="min", method="steepest_descent")
+    prob = Problem(f, grad, dim, prob_type="min", method="sd")
     # run conjugate gradient algorithm with default parameters
     sol, info = prob.solve(x0=x0, gtol=1e-8, maxiter=1000)
     # check that the algorithm converged
@@ -47,7 +47,7 @@ def test_conjugate_gradient():
 
     # define optimization problem
     x0 = np.zeros((dim,))
-    prob = Problem(f, grad, dim, prob_type="min", method="conjugate_gradient")
+    prob = Problem(f, grad, dim, prob_type="min", method="cg")
     # run conjugate gradient algorithm
     sol, info = prob.solve(x0=x0, gtol=1e-8, maxiter=1000)
     # check that the algorithm converged
