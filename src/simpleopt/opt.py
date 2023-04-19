@@ -11,9 +11,7 @@ class Problem:
     """A class for formulating an optimization problem.
     Sets up an optimization problem by defining the type of optimization problem (minimization or maximization),
     objective function, gradient, initial point, tolerance, maximum number of iterations, step size, and
-    choice of optimization method.
-    """
-
+    choice of optimization method."""
     def __init__(
         self: object,
         f: Callable,
@@ -23,6 +21,7 @@ class Problem:
         method: str = None,
     ) -> object:
         """Initialize the problem class.
+
         :param self: Optimization problem
         :type self: object
         :param f: Function to be optimized
@@ -74,9 +73,7 @@ class Problem:
             maxiter = self.dim * 150
 
         if self.method == "steepest_descent":
-            return steepest_descent(
-                self, x0=x, gtol=gtol, alpha=alpha, maxiter=maxiter
-            )
+            return steepest_descent(self, x0=x, gtol=gtol, alpha=alpha, maxiter=maxiter)
         elif self.method == "conjugate_gradient":
             return conjugate_gradient(
                 self, x0=x, gtol=gtol, alpha=alpha, maxiter=maxiter
@@ -272,7 +269,7 @@ def conjugate_gradient(
             info["converged"] = True
             break
 
-        #set step size using Fletcher-Reeves rule
+        # set step size using Fletcher-Reeves rule
         beta = np.dot(grad1, grad1) / np.dot(grad0, grad0)
         # update descent direction
         direction = grad1 + beta * direction
@@ -307,10 +304,10 @@ if __name__ == "__main__":
     # check that the solution is correct
     assert_allclose(sol1, sol_exact, atol=1e-6)
 
-
     # define optimization problem
     # Define quadratic function f(x) = 0.5 * x.T @ A @ x + b.T @ x using quad module
     import quad
+
     f = quad.function(A, b)
     # Define optimization problem
     prob2 = Problem(f.eval, f.grad, dim, prob_type="min", method="conjugate_gradient")
@@ -321,6 +318,3 @@ if __name__ == "__main__":
     # Check that the algorithm converged and that the solution is correct
     assert info2["converged"]
     assert_allclose(sol2, sol_exact, atol=1e-6, equal_nan=True)
-
-
-
