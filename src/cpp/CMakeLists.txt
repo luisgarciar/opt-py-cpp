@@ -5,5 +5,5 @@ add_subdirectory(src)
 add_subdirectory(bind)
 add_subdirectory(tests)
 
-enable_testing()
+#enable_testing()
 
