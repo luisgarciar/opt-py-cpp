@@ -1,0 +1,9 @@
+name: mun
+channels:
+  - defaults
+dependencies:
+  - numpy
+  - python=3.9
+  - pytest
+  - ninja
+prefix: /usr/local/anaconda3/envs/mun

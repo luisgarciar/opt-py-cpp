@@ -1,0 +1,7 @@
+Metadata-Version: 2.1
+Name: simpleopt
+Version: 0.0.1
+Summary: A hybrid Python/C++ optimization tool
+Author: Luis Garcia Ramos
+Author-email: luisgarciar@gmail.com
+License-File: LICENSE
