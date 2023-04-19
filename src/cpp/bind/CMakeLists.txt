@@ -19,7 +19,7 @@ FetchContent_MakeAvailable(pybind11)
 # Directory where the header files are located
 include_directories("${CMAKE_SOURCE_DIR}/src/cpp/include")
 # Create the python module defined in bindings.cpp
-pybind11_add_module(quad SHARED bindings.cpp)
+pybind11_add_module(quad MODULE bindings.cpp)
 #Link the module to the pybind11 library and the quad_function library
 target_link_libraries(quad PUBLIC quad_function pybind11::module)
 
