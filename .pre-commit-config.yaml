@@ -5,11 +5,18 @@ repos:
     hooks:
       - id: black
         language_version: python3
+        args:
+          - "--line-length=88"
+          - "--target-version=py36"
+          - "--skip-string-normalization"
 
   - repo: https://github.com/PyCQA/flake8
     rev: 4.0.1
     hooks:
       - id: flake8
         args:
+          # making isort line length compatible with black
           - "--max-line-length=88"
+          - "--max-complexity=18"
+          - "--select=B,C,E,F,W,T4,B9"
           - "--ignore=E203,E266,E501,W503,F403,F401,E402"
