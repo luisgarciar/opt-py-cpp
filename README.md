@@ -45,14 +45,21 @@ environment, run the following command:
     conda activate simpleopt
    ```
 
-Then navigate to the root directory of the repository and run the `setup.py` script using pip:
+Alternatively, you can install the Python requirements using pip. In a terminal window, navigate to the root directory
+of the repository and run the following command:
+
+```bash
+    pip install -r requirements.txt
+   ```
+
+Next run the `setup.py` script using pip:
 
 ``` bash
     pip install .
 ```
 
-This will install the Python requirements, build the C++ functions, bind them and make them available in Python by
-adding the module `simpleopt` to the Python path. To test that the installation was successful, run the following
+This will compile the C++ functions, bind them and make them available in Python as the module `quad`, and will also 
+add the package `simpleopt` to the Python path. To test that the installation was successful, run the following
 command:
 
 ```bash
