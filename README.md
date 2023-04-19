@@ -18,7 +18,7 @@ using the ```apt-get``` package manager, run the following commands in a termina
     sudo apt-get install gcc g++ cmake make libeigen3-dev lib
    ```
 
-In macOS you can install the C++ requirements using the package manager
+In macOS, you can install the C++ requirements using the package manager
 [Homebrew](https://brew.sh), by typing the following commands in a terminal window:
 
 ```bash
@@ -48,13 +48,13 @@ environment, run the following command:
 Alternatively, you can install the Python requirements using pip. In a terminal window, navigate to the root directory
 of the repository and run the following command:
 
-```bash
+``` bash
     pip install -r requirements.txt
    ```
 
 Next run the `setup.py` script using pip:
 
-``` bash
+```bash
     pip install .
 ```
 
@@ -67,4 +67,12 @@ command:
    ```
 If the installation was successful, you should not see any error messages.
 ### Usage
+
+A simple example of how to use the package is shown in the file `demo.py`. To run the example, go to the root directory
+of the repository and run the following command:
+
+```bash
+    python demo.py
+   ```
+
 
