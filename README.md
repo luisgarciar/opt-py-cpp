@@ -21,7 +21,7 @@ using the ```apt-get``` package manager, run the following commands in a termina
    ```
 
 In macOS, you can install the C++ requirements using the package manager
-[Homebrew](https://brew.sh), by typing the following commands in a terminal window:
+Homebrew, by typing the following commands in a terminal window:
 
 ```bash
     brew install gcc cmake make eigen
