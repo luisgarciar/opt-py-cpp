@@ -1,10 +1,9 @@
 # Requirements for the documentation
 pip-tools
 myst-parser
-sphinx==3.4.3
 sphinx-autodoc-typehints
 Jinja2<3.1
+cmake
 
 
 
-# sphinx_autodoc_typehints==1.12.0
