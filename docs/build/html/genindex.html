@@ -10,11 +10,11 @@
     <script src="_static/js/html5shiv.min.js"></script>
   <![endif]-->
   
-        <script src="_static/jquery.js"></script>
-        <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
         <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
         <script src="_static/doctools.js"></script>
-        <script src="_static/sphinx_highlight.js"></script>
     <script src="_static/js/theme.js"></script>
     <link rel="index" title="Index" href="#" />
     <link rel="search" title="Search" href="search.html" /> 
@@ -42,6 +42,7 @@
               <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="simpleopt.html">simpleopt Package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="quad.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">quad</span></code>-  module for representing quadratic functions</a></li>
 </ul>
 
         </div>
@@ -71,25 +72,66 @@
 <h1 id="index">Index</h1>
 
 <div class="genindex-jumpbox">
- <a href="#C"><strong>C</strong></a>
- | <a href="#L"><strong>L</strong></a>
+ <a href="#_"><strong>_</strong></a>
+ | <a href="#C"><strong>C</strong></a>
+ | <a href="#E"><strong>E</strong></a>
+ | <a href="#F"><strong>F</strong></a>
+ | <a href="#G"><strong>G</strong></a>
  | <a href="#M"><strong>M</strong></a>
  | <a href="#P"><strong>P</strong></a>
+ | <a href="#Q"><strong>Q</strong></a>
  | <a href="#S"><strong>S</strong></a>
+ | <a href="#V"><strong>V</strong></a>
  
 </div>
+<h2 id="_">_</h2>
+<table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="simpleopt.opt.html#simpleopt.opt._Optimizer._line_search">_line_search() (simpleopt.opt._Optimizer method)</a>
+</li>
+      <li><a href="simpleopt.opt.html#simpleopt.opt._Optimizer">_Optimizer (class in simpleopt.opt)</a>
+</li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="simpleopt.opt.html#simpleopt.opt._Optimizer._solve">_solve() (simpleopt.opt._Optimizer method)</a>
+
+      <ul>
+        <li><a href="simpleopt.opt.html#simpleopt.opt.ConjugateGradient._solve">(simpleopt.opt.ConjugateGradient method)</a>
+</li>
+        <li><a href="simpleopt.opt.html#simpleopt.opt.SteepestDescent._solve">(simpleopt.opt.SteepestDescent method)</a>
+</li>
+      </ul></li>
+  </ul></td>
+</tr></table>
+
 <h2 id="C">C</h2>
 <table style="width: 100%" class="indextable genindextable"><tr>
   <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="simpleopt.opt.html#simpleopt.opt.conjugate_gradient">conjugate_gradient() (in module simpleopt.opt)</a>
+      <li><a href="simpleopt.opt.html#simpleopt.opt.ConjugateGradient">ConjugateGradient (class in simpleopt.opt)</a>
 </li>
   </ul></td>
 </tr></table>
 
-<h2 id="L">L</h2>
+<h2 id="E">E</h2>
 <table style="width: 100%" class="indextable genindextable"><tr>
   <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="simpleopt.opt.html#simpleopt.opt.line_search">line_search() (in module simpleopt.opt)</a>
+      <li><a href="quad.html#quad.Function.eval">eval() (quad.Function method)</a>
+</li>
+  </ul></td>
+</tr></table>
+
+<h2 id="F">F</h2>
+<table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="quad.html#quad.Function">Function (class in quad)</a>
+</li>
+  </ul></td>
+</tr></table>
+
+<h2 id="G">G</h2>
+<table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="quad.html#quad.Function.grad">grad() (quad.Function method)</a>
 </li>
   </ul></td>
 </tr></table>
@@ -97,10 +139,14 @@
 <h2 id="M">M</h2>
 <table style="width: 100%" class="indextable genindextable"><tr>
   <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="quad.html#quad.Function.matrix">matrix (quad.Function property)</a>
+</li>
       <li>
     module
 
       <ul>
+        <li><a href="quad.html#module-quad">quad</a>
+</li>
         <li><a href="simpleopt.opt.html#module-simpleopt.opt">simpleopt.opt</a>
 </li>
       </ul></li>
@@ -112,6 +158,19 @@
   <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="simpleopt.opt.html#simpleopt.opt.Problem">Problem (class in simpleopt.opt)</a>
 </li>
+  </ul></td>
+</tr></table>
+
+<h2 id="Q">Q</h2>
+<table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li>
+    quad
+
+      <ul>
+        <li><a href="quad.html#module-quad">module</a>
+</li>
+      </ul></li>
   </ul></td>
 </tr></table>
 
@@ -129,7 +188,15 @@
   <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="simpleopt.opt.html#simpleopt.opt.Problem.solve">solve() (simpleopt.opt.Problem method)</a>
 </li>
-      <li><a href="simpleopt.opt.html#simpleopt.opt.steepest_descent">steepest_descent() (in module simpleopt.opt)</a>
+      <li><a href="simpleopt.opt.html#simpleopt.opt.SteepestDescent">SteepestDescent (class in simpleopt.opt)</a>
+</li>
+  </ul></td>
+</tr></table>
+
+<h2 id="V">V</h2>
+<table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="quad.html#quad.Function.vector">vector (quad.Function property)</a>
 </li>
   </ul></td>
 </tr></table>
