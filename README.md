@@ -126,7 +126,7 @@ The documentation is provided in the `docs` directory. To build the documentatio
     make clean html
    ```
 
-Alternatively, the documentation can be found [online](https://luisgarciar-simpleopt.readthedocs.io/en/latest/simpleopt.html). 
+The html files will be available in the ``docs/_build/html`` directory.
 
 ### License
 
