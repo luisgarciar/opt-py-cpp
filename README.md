@@ -28,9 +28,9 @@ Homebrew, by typing the following commands in a terminal window:
    ```
 
 The C++ library pybind11 is fetch during the build process,
-so you do not need to install them prior to building the package. 
+so you do not need to install it prior to building the package. 
 
-To build the rest of the package, you will need Python 3.6 or later. We recommend using a virtual environment,
+To use the rest of the package, you will need Python 3.6 or later. We recommend using a virtual environment,
 such as the one provided by the conda package manager from the [Anaconda]((https://www.anaconda.com/distribution/)) 
 distribution. If you are using conda, you can create a virtual environment using the `environment.yml` file provided.
 After downloading the source code from this repository, navigate to the root directory of the repository
@@ -41,7 +41,7 @@ and run the following command:
    ```
 
 Note that the name of the virtual environment is `simpleopt` in the `environment.yml` file, and that this file
-also includes the CMake and Eigen packages. To activate the virtual environment, run the following command:
+also includes the CMake and Eigen packages for convenience. To activate the virtual environment, run the following command:
 
 ```bash
     conda activate simpleopt
@@ -54,13 +54,13 @@ of the repository and run the following command:
     pip install -r requirements.txt
    ```
 
-Next, run the `setup.py` script using pip:
+To finish the installation run the `setup.py` script using pip:
 
 ```bash
     pip install .
 ```
 
-This will compile the C++ functions, bind them and make them available in Python as the module `quad`, and will also 
+This will compile the C++ functions, bind them and make them available in Python as the module `quad`, and also 
 add the package `simpleopt` to the Python path. To test that the installation was successful, run the following
 command:
 
@@ -126,7 +126,8 @@ The documentation is provided in the `docs` directory. To build the documentatio
     make clean html
    ```
 
-The html files will be available in the ``docs/_build/html`` directory.
+The html files will be available in the ``docs/_build/html`` directory. Alternatively, you can view the documentation
+online [here](https://luisgarciar-simpleopt.readthedocs.io/en/latest/quad.html).
 
 ### License
 
