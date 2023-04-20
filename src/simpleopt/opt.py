@@ -32,7 +32,6 @@ class Problem:
         :type prob_type: str
         :param method: Optimization method to use ('sd' for steepest descent or 'cg' for conjugate gradient)
         :type method: str
-
         """
 
         self.f = f
@@ -70,7 +69,6 @@ class Problem:
         :rtype: NDArray
         :return info :  Dictionary with additional information about the optimization solve.
         :rtype info: dict
-
         """
         if self.method == "sd":
             optimizer = SteepestDescent(self, x0, gtol, alpha, max_iter)
@@ -89,7 +87,7 @@ class Problem:
         self.iter_fvalues = None
 
 
-class Optimizer:
+class _Optimizer:
     """Base class for optimization algorithms."""
 
     def __init__(
@@ -156,7 +154,7 @@ class Optimizer:
 
     def _solve(self):
         """Abstract method that solves the optimization problem."""
-        if self.__class__ is Optimizer:
+        if self.__class__ is _Optimizer:
             raise NotImplementedError(
                 "_solve has to be overridden by " "the derived optimizer class."
             )
@@ -208,7 +206,7 @@ class Optimizer:
         return t, True
 
 
-class SteepestDescent(Optimizer):
+class SteepestDescent(_Optimizer):
     """Steepest descent algorithm with Armijo line search for solving unconstrained optimization problems."""
 
     def __init__(self, problem, x0, gtol, alpha, max_iter):
@@ -251,7 +249,7 @@ class SteepestDescent(Optimizer):
         self.solution = x
 
 
-class ConjugateGradient(Optimizer):
+class ConjugateGradient(_Optimizer):
     """Conjugate Gradient algorithm with Fletcher-Reeves rule and Armijo line search for solving unconstrained
     optimization problems."""
 
