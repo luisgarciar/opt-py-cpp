@@ -9,19 +9,20 @@ namespace py = pybind11;
 PYBIND11_MODULE(quad, m
 ){
 py::options options;
-options.
-disable_function_signatures ();     // disable *default* function signatures in the docstrings
-options.
-disable_enum_members_docstring (); // disable *default* enum members docstrings
+//options.
+//disable_function_signatures ();     // disable *default* function signatures in the docstrings
+//options.
+//disable_enum_members_docstring (); // disable *default* enum members docstrings
 py::class_<quadFunction>(m, "Function")
 .
 def(py::init<py::EigenDRef < Eigen::MatrixXd>, py::EigenDRef<Eigen::VectorXd>>
 (), R"pbdoc("Class for representing a function of the form
 
 	.. math::
+
 		  f(x)=x^{T}Ax+b^{T}x
 
-	:param matrix: Matrix :math:`A` (dtype: float64)
+	:param: matrix: Matrix :math:`A` (dtype: float64)
 	:type matrix: NDArray
 	:param vector: Vector :math:`b` (dtype: float64)
 	:type vector: NDArray

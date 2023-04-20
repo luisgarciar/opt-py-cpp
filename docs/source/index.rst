@@ -38,7 +38,7 @@ Requirements and Installation
 To build the C++ test functions simpleopt requires a C++ compiler, the CMake and Make build systems, and the Eigen
 library for linear algebra computations. For the optimization routines, Python 3.9 or higher is required, as well as
 a set of packages listed in the ``requirements.txt`` file in the root directory of the repository. For detailed
-installation instructions of these components see the  README file in the `repository <https://github.com/luisgarciar/simpleopt)>`_.
+installation instructions of these components see the  README file in the `repository <https://github.com/luisgarciar/simpleopt>`_.
 
 
 
