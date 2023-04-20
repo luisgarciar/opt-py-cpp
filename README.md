@@ -28,7 +28,7 @@ Homebrew, by typing the following commands in a terminal window:
    ```
 
 The C++ library pybind11 is fetch during the build process,
-so you do not need to install them prior to building the package.
+so you do not need to install them prior to building the package. 
 
 To build the rest of the package, you will need Python 3.6 or later. We recommend using a virtual environment,
 such as the one provided by the conda package manager from the [Anaconda]((https://www.anaconda.com/distribution/)) 
@@ -40,8 +40,8 @@ and run the following command:
     conda env create -f environment.yml
    ```
 
-Note that the name of the virtual environment is `simpleopt` in the `environment.yml` file.  To activate the virtual
-environment, run the following command:
+Note that the name of the virtual environment is `simpleopt` in the `environment.yml` file, and that this file
+also includes the CMake and Eigen packages. To activate the virtual environment, run the following command:
 
 ```bash
     conda activate simpleopt
