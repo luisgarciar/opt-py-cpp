@@ -1,6 +1,5 @@
 :mod:`quad`-  module for representing quadratic functions
 =========================================================
-
 The :mod:`quad` module provides methods for representing and evaluating functions of the form
 
 .. math::
