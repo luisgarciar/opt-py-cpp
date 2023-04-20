@@ -1,10 +1,9 @@
 ## Optimization tools with Python and C++
 
-This repository contains a collection of simple optimization tools
-written in Python along with test functions written in C++. The test functions
-are written in C++ and bound to Python using the pybind11 library. The test functions
-are of the form
-    $$f(x) = x^{T} A x + b^{T} x$$
+This repository contains a collection of simple optimization tools in Python along with test functions written in C++ 
+and bound to Python using the pybind11 library. The test functions
+are of the form 
+ $$f(x) = x^{T} A x + b^{T} x$$
 where $A\in \mathbb{R}^{n \times n}$ and $b\in \mathbb{R}^{n}$ are given parameters.  
 
 
@@ -83,13 +82,10 @@ An example is shown below.
     b = np.array([1, 1], dtype=np.float64)
     f = quad.Function(A, b)
     x = np.array([1, 1], dtype=np.float64)
-    
-    print(f.eval(x))
-    print(f.grad(x))
    ```
 
-To use the optimization tools, you can use the `Problem` class in the `simpleopt` module. First, you need to create
-an instance of the `Problem` class. To call the solver, the `solve` should be used. An example is shown below.
+To use the optimization tools, you can use the `Problem` class in the `simpleopt.opt` module. First, you need to create
+an instance of the `Problem` class. To call the solver, the `solve` method should be used. An example is shown below.
 For more information, see the documentation.
 
 ```python
@@ -101,7 +97,7 @@ For more information, see the documentation.
     b = np.array([1, 1], dtype=np.float64)
     f = quad.Function(A, b)
     x0 = np.array([1, 1], dtype=np.float64)
-    max_iter = 100
+    max_iter = 5
     problem = simpleopt.opt.Problem(f.eval, f.grad, dim=2, prob_type="min", method='sd')
     sol, info = problem.solve(x0, max_iter=max_iter)
    ```
@@ -111,7 +107,7 @@ A simple example of how to use the package is shown in the file `demo.py`. To ru
 of the repository and run the following command:
 
 ```bash
-    python demo.py
+    python src/simpleopt/demo.py
    ```
 
 ### Tests
