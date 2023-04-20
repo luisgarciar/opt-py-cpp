@@ -1,4 +1,5 @@
-cmake_minimum_required(VERSION 3.11)
+project(simpleopt)
+cmake_minimum_required(VERSION 3.24.0)
 
 #Add the subdirectories with source code and bindings
 add_subdirectory(src)
