@@ -13,19 +13,36 @@ options.
 disable_function_signatures ();     // disable *default* function signatures in the docstrings
 options.
 disable_enum_members_docstring (); // disable *default* enum members docstrings
-m.
-doc () = "Module for defining quadratic functions of the form "
-		 " f(x) = 0.5*(x.T @ A @ x) + b.T @ x"; // optional module docstring
-py::class_<quadFunction>(m,
-"function", "A function of the form f(x) = 0.5*(x.T @ A @ x) + b.T @ x")
+py::class_<quadFunction>(m, "Function")
 .
 def(py::init<py::EigenDRef < Eigen::MatrixXd>, py::EigenDRef<Eigen::VectorXd>>
-())
-.def_property("matrix", &quadFunction::get_mat, &quadFunction::set_mat)
-.def_property("vector", &quadFunction::get_vec, &quadFunction::set_vec)
-.def("eval", &quadFunction::eval, "Evaluates the quadratic function at the given point",
-py::arg("x"), py::return_value_policy::take_ownership)
-.def("grad", &quadFunction::grad, "Evaluates the gradient of the quadratic function at the given point", py::arg("x"),
+(), R"pbdoc("Class for representing a function of the form
+
+	.. math::
+		  f(x)=x^{T}Ax+b^{T}x
+
+	:param matrix: Matrix :math:`A` (dtype: float64)
+	:type matrix: NDArray
+	:param vector: Vector :math:`b` (dtype: float64)
+	:type vector: NDArray
+
+	)pbdoc", py::arg("matrix"), py::arg("vector"))
+.def_property("matrix", &quadFunction::get_mat, &quadFunction::set_mat, R"pbdoc(Matrix :math:`A`
+	)pbdoc")
+.def_property("vector", &quadFunction::get_vec, &quadFunction::set_vec, R"pbdoc(Vector :math:`b`
+	)pbdoc")
+.def("eval", &quadFunction::eval, R"pbdoc(Evaluates the quadratic function at the given point.
+
+    :param x: Point at which to evaluate the function (dtype: float64)
+    :type x: NDArray
+
+    )pbdoc", py::arg("x"), py::return_value_policy::take_ownership)
+.def("grad", &quadFunction::grad, R"pbdoc(Evaluates the gradient of the quadratic function at the given point.
+
+    :param x: Point at which to evaluate the gradient of the function (dtype: float64)
+    :type x: NDArray
+
+    )pbdoc", py::arg("x"),
 py::return_value_policy::take_ownership);
 }
 

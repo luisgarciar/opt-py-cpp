@@ -1,0 +1,9 @@
+# Requirements for the documentation
+pip-tools
+myst-parser
+sphinx-autodoc-typehints
+Jinja2<3.1
+cmake
+
+
+

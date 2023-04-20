@@ -18,14 +18,14 @@ def test_integration_steepest_descent():
     exact_sol = np.linalg.solve(A, -b)
 
     # Define quadratic function f(x) = 0.5 * x.T @ A @ x + b.T @ x using quad module
-    f = quad.function(A, b)
+    f = quad.Function(A, b)
 
     # Define optimization problem
-    prob = opt.Problem(f.eval, f.grad, dim, prob_type="min", method="steepest_descent")
+    prob = opt.Problem(f.eval, f.grad, dim, prob_type="min", method="sd")
 
     # Solve optimization problem with the steepest descent method
     x0 = np.zeros((dim,)).astype(np.float64)
-    sol, info = prob.solve(x0=x0, gtol=1e-8, maxiter=1000)
+    sol, info = prob.solve(x0=x0, gtol=1e-8, max_iter=1000)
 
     # Check that the algorithm converged and that the solution is correct
     assert info["converged"]
@@ -35,21 +35,19 @@ def test_integration_steepest_descent():
 def test_integration_conj_grad():
     """Test of opt.solve and quad.function with normal inputs"""
     dim = 5
-    vec = np.array([1, 2, 3, 4, 5], dtype=np.float64)
+    vec = np.array([5, 2, 3, 4, 1], dtype=np.float64)
     A = np.diag(vec)
     b = np.ones((dim,), dtype=np.float64)
     # Exact solution
     exact_sol = np.linalg.solve(A, -b)
 
     # Define quadratic function f(x) = 0.5 * x.T @ A @ x + b.T @ x using quad module
-    f = quad.function(A, b)
+    f = quad.Function(A, b)
     # Define optimization problem
-    prob = opt.Problem(
-        f.eval, f.grad, dim, prob_type="min", method="conjugate_gradient"
-    )
+    prob = opt.Problem(f.eval, f.grad, dim, prob_type="min", method="cg")
     # Solve optimization problem with the conjugate gradient algorithm
     x0 = np.zeros((dim,)).astype(np.float64)
-    sol2, info2 = prob.solve(x0=x0, gtol=1e-6, maxiter=50)
+    sol2, info2 = prob.solve(x0=x0, gtol=1e-6, max_iter=50)
 
     # Check that the algorithm converged and that the solution is correct
     assert info2["converged"]
@@ -79,6 +77,6 @@ def test_integration_conj_grad():
 #     )
 #
 #     # Solve optimization problem with conjugate gradient method
-#     sol, info = prob.solve(maxiter=20, gtol=1e-6)
+#     sol, info = prob.solve(max_iter=20, gtol=1e-6)
 
 #     assert_allclose(sol, exact_sol, atol=1e-4, equal_nan=True) or not info["converged"]

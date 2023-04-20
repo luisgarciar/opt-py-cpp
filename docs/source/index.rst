@@ -3,8 +3,8 @@
    You can adapt this file completely to your liking, but it should at least
    contain the root `toctree` directive.
 
-Welcome to simpleopt's documentation!
-=====================================
+Welcome to the documentation of simpleopt!
+==========================================
 
 What is simpleopt and where is the code?
 ----------------------------------------
@@ -13,15 +13,15 @@ The module ``simpleopt.opt`` includes implementations of the steepest descent an
 methods, as well as a class for representing optimization problems.
 
 The separate module ``quad`` allows to construct and call functions of the form
+
 .. math::
-f(x) = x^T A x + b^T x
+          f(x)=x^{T}Ax+b^{T}x
 
-where ..math:: `A` is an, .. math:: `n \times n` real   matrix and .. math:: `b` is an .. math:: `n \times 1` real
-vector. The module ``quad`` is implemented in C++ using the Eigen library for linear algebra computations, and is
-wrapped in Python using pybind11.
+where :math:`A \in \mathbb{R}^{n \times n}` and :math:`b,x \in \mathbb{R}^{n}`. The module ``quad`` is implemented
+in C++ using the Eigen library for linear algebra computations, and is wrapped in Python using pybind11.
 
-The code is available on this `GitHub repository <https://github.com/luisgarciar/simpleopt>`_.
 
+The code is available at this `GitHub repository <https://github.com/luisgarciar/simpleopt>`_.
 
 Contents
 --------
@@ -31,25 +31,15 @@ Contents
    :caption: Contents:
 
    simpleopt
-.. quad
+   quad
 
 Requirements and Installation
 -----------------------------
 To build the C++ test functions simpleopt requires a C++ compiler, the CMake and Make build systems, and the Eigen
-library for linear algebra computations. For detailed installation instructions of these components see the  README file
-in the `repository <https://github.com/luisgarciar/simpleopt)>`.
+library for linear algebra computations. For the optimization routines, Python 3.9 or higher is required, as well as
+a set of packages listed in the ``requirements.txt`` file in the root directory of the repository. For detailed
+installation instructions of these components see the  README file in the `repository <https://github.com/luisgarciar/simpleopt)>`_.
 
-For the optimization routines, Python 3.6 or higher is required. We recommend that you use a virtual environment. Download the source code from the repository and navigate in your terminal
-to the root directory of the repository. The command ``pip install .`` runs the installation script, installs the
-python requirements, and compiles the C++ functions and makes the package available in your virtual environment.
-
-To test the installation, run the following command in your terminal:
-
-.. code-block:: bash
-
-   pytest tests
-
-If the installation was successful, all tests should pass (but warnings are ok).
 
 
 Indices and tables

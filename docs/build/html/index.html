@@ -4,18 +4,19 @@
   <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Welcome to simpleopt’s documentation! &mdash; simpleopt 0.0.1 documentation</title>
+  <title>Welcome to the documentation of simpleopt! &mdash; simpleopt 0.0.1 documentation</title>
       <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
   <!--[if lt IE 9]>
     <script src="_static/js/html5shiv.min.js"></script>
   <![endif]-->
   
-        <script src="_static/jquery.js"></script>
-        <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
         <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
         <script src="_static/doctools.js"></script>
-        <script src="_static/sphinx_highlight.js"></script>
+        <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@2/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
     <script src="_static/js/theme.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
@@ -44,6 +45,7 @@
               <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="simpleopt.html">simpleopt Package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="quad.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">quad</span></code>-  module for representing quadratic functions</a></li>
 </ul>
 
         </div>
@@ -60,7 +62,7 @@
           <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
       <li><a href="#" class="icon icon-home" aria-label="Home"></a></li>
-      <li class="breadcrumb-item active">Welcome to simpleopt’s documentation!</li>
+      <li class="breadcrumb-item active">Welcome to the documentation of simpleopt!</li>
       <li class="wy-breadcrumbs-aside">
             <a href="_sources/index.rst.txt" rel="nofollow"> View page source</a>
       </li>
@@ -70,20 +72,19 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
              
-  <section id="welcome-to-simpleopt-s-documentation">
-<h1>Welcome to simpleopt’s documentation!<a class="headerlink" href="#welcome-to-simpleopt-s-documentation" title="Permalink to this heading"></a></h1>
+  <section id="welcome-to-the-documentation-of-simpleopt">
+<h1>Welcome to the documentation of simpleopt!<a class="headerlink" href="#welcome-to-the-documentation-of-simpleopt" title="Permalink to this heading"></a></h1>
 <section id="what-is-simpleopt-and-where-is-the-code">
 <h2>What is simpleopt and where is the code?<a class="headerlink" href="#what-is-simpleopt-and-where-is-the-code" title="Permalink to this heading"></a></h2>
 <p>simpleopt is a set of simple optimization routines written in Python along with a set of test functions.
 The module <code class="docutils literal notranslate"><span class="pre">simpleopt.opt</span></code> includes implementations of the steepest descent and the conjugate gradient
 methods, as well as a class for representing optimization problems.</p>
-<p>The separate module <code class="docutils literal notranslate"><span class="pre">quad</span></code> allows to construct and call functions of the form
-.. math::
-f(x) = x^T A x + b^T x</p>
-<p>where ..math:: <cite>A</cite> is an, .. math:: <cite>n times n</cite> real   matrix and .. math:: <cite>b</cite> is an .. math:: <cite>n times 1</cite> real
-vector. The module <code class="docutils literal notranslate"><span class="pre">quad</span></code> is implemented in C++ using the Eigen library for linear algebra computations, and is
-wrapped in Python using pybind11.</p>
-<p>The code is available on this <a class="reference external" href="https://github.com/luisgarciar/simpleopt">GitHub repository</a>.</p>
+<p>The separate module <code class="docutils literal notranslate"><span class="pre">quad</span></code> allows to construct and call functions of the form</p>
+<div class="math notranslate nohighlight">
+\[f(x)=x^{T}Ax+b^{T}x\]</div>
+<p>where <span class="math notranslate nohighlight">\(A \in \mathbb{R}^{n \times n}\)</span> and <span class="math notranslate nohighlight">\(b,x \in \mathbb{R}^{n}\)</span>. The module <code class="docutils literal notranslate"><span class="pre">quad</span></code> is implemented
+in C++ using the Eigen library for linear algebra computations, and is wrapped in Python using pybind11.</p>
+<p>The code is available at this <a class="reference external" href="https://github.com/luisgarciar/simpleopt">GitHub repository</a>.</p>
 </section>
 <section id="contents">
 <h2>Contents<a class="headerlink" href="#contents" title="Permalink to this heading"></a></h2>
@@ -91,31 +92,19 @@ wrapped in Python using pybind11.</p>
 <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="simpleopt.html">simpleopt Package</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="simpleopt.opt.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">simpleopt.opt</span></code> - Simple optimization methods</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="simpleopt.opt.html#simpleopt.opt.Problem"><code class="docutils literal notranslate"><span class="pre">Problem</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="simpleopt.opt.html#simpleopt.opt.conjugate_gradient"><code class="docutils literal notranslate"><span class="pre">conjugate_gradient()</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="simpleopt.opt.html#simpleopt.opt.line_search"><code class="docutils literal notranslate"><span class="pre">line_search()</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="simpleopt.opt.html#simpleopt.opt.steepest_descent"><code class="docutils literal notranslate"><span class="pre">steepest_descent()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="simpleopt.opt.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">simpleopt.opt</span></code> - Simple optimization methods</a></li>
 </ul>
 </li>
-</ul>
-</li>
+<li class="toctree-l1"><a class="reference internal" href="quad.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">quad</span></code>-  module for representing quadratic functions</a></li>
 </ul>
 </div>
 </section>
 <section id="requirements-and-installation">
 <h2>Requirements and Installation<a class="headerlink" href="#requirements-and-installation" title="Permalink to this heading"></a></h2>
 <p>To build the C++ test functions simpleopt requires a C++ compiler, the CMake and Make build systems, and the Eigen
-library for linear algebra computations. For detailed installation instructions of these components see the  README file
-in the <cite>repository &lt;https://github.com/luisgarciar/simpleopt)&gt;</cite>.</p>
-<p>For the optimization routines, Python 3.6 or higher is required. We recommend that you use a virtual environment. Download the source code from the repository and navigate in your terminal
-to the root directory of the repository. The command <code class="docutils literal notranslate"><span class="pre">pip</span> <span class="pre">install</span> <span class="pre">.</span></code> runs the installation script, installs the
-python requirements, and compiles the C++ functions and makes the package available in your virtual environment.</p>
-<p>To test the installation, run the following command in your terminal:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>pytest<span class="w"> </span>tests
-</pre></div>
-</div>
-<p>If the installation was successful, all tests should pass (but warnings are ok).</p>
+library for linear algebra computations. For the optimization routines, Python 3.9 or higher is required, as well as
+a set of packages listed in the <code class="docutils literal notranslate"><span class="pre">requirements.txt</span></code> file in the root directory of the repository. For detailed
+installation instructions of these components see the  README file in the <a class="reference external" href="https://github.com/luisgarciar/simpleopt)">repository</a>.</p>
 </section>
 </section>
 <section id="indices-and-tables">
