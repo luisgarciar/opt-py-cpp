@@ -1,7 +1,7 @@
 :mod:`quad`-  module for representing quadratic functions
 =========================================================
 
-The `quad` module provides methods for representing and evaluating functions of the form
+The :mod:`quad` module provides methods for representing and evaluating functions of the form
 
 .. math::
           f(x)=x^{T}Ax+b^{T}x
