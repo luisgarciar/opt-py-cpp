@@ -1,3 +1,4 @@
+project(simpleopt)
 cmake_minimum_required(VERSION 3.11)
 
 #Add the subdirectories with source code and bindings
