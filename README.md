@@ -3,7 +3,7 @@
 This repository contains a collection of simple optimization tools
 written in Python along with test functions written in C++. The test functions
 are written in C++ and bound to Python using the pybind11 library. The test functions
-are functions of the form
+are of the form
     $$f(x) = x^{T} A x + b^{T} x$$
 where $A\in \mathbb{R}^{n \times n}$ and $b\in \mathbb{R}^{n}$ are given parameters.  
 
