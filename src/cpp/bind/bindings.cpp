@@ -13,14 +13,6 @@ options.
 disable_function_signatures ();     // disable *default* function signatures in the docstrings
 options.
 disable_enum_members_docstring (); // disable *default* enum members docstrings
-m.doc () = R"pbdoc(
-        .. currentmodule:: quad
-        .. autosummary::
-           :toctree: _generate
-           eval
-           grad
-    )pbdoc";
-// optional module docstring
 py::class_<quadFunction>(m, "Function")
 .
 def(py::init<py::EigenDRef < Eigen::MatrixXd>, py::EigenDRef<Eigen::VectorXd>>

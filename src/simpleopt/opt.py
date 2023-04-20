@@ -279,8 +279,7 @@ class ConjugateGradient(_Optimizer):
                 x = x + step_size * direction
             else:  # if line search did not converge, stop and return
                 self.converged = False
-                iter_count += 1
-                break  # TODO: maybe try to reduce step size and continue
+                break
             # compute new gradient and function value, check stopping criterion
             grad1 = -self.grad(x)
             self.iter_fvalues[iter_count] = self.func(x)

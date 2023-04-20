@@ -23,12 +23,10 @@ extensions = [
     "myst_parser",
     "sphinx.ext.autodoc",
     "sphinx_rtd_theme",
-    "sphinx.ext.autosummary",
     "sphinx.ext.intersphinx",
     "sphinx.ext.mathjax",
 ]
 
-autosummary_generate = False
 
 mathjax_path = (
     "https://cdn.jsdelivr.net/npm/mathjax@2/MathJax.js?config=TeX-AMS-MML_HTMLorMML"
@@ -54,16 +52,3 @@ autodoc_typehints = "description"
 
 html_theme = "sphinx_rtd_theme"
 html_static_path = ["_static"]
-
-# src_path = sys.path.append(
-#    os.path.join(os.path.dirname(__name__), "..", "src", "simpleopt")
-
-# #sys.path.insert(
-#     0,
-#     os.path.abspath(
-#         sys.path.append(
-#             os.path.join(os.path.dirname(__name__), "..", "src", "simpleopt")
-#         )
-#     ),
-# )
-# )
