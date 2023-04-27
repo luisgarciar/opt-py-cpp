@@ -115,7 +115,7 @@ A test suite is provided in the `tests` directory. To run the tests, go to the r
 the following command:
 
 ```bash
-    python -m pytest tests
+   pytest tests
    ```
 
 ### Documentation
@@ -131,4 +131,4 @@ online [here](https://luisgarciar-simpleopt.readthedocs.io/en/latest/quad.html).
 
 ### License
 
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+This project is licensed under the GNU General Public License v3.0 - see the [LICENSE](LICENSE) file for details.
